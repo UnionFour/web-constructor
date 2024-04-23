@@ -1,0 +1,21 @@
+<div class="variables">
+    <tui-select
+            tuiTextfieldSize="m"
+            class="tui-space_vertical-4 m-size"
+            [valueContent]="themeContent"
+            [(ngModel)]="value"
+    >
+        Тема
+        <tui-data-list-wrapper
+                *tuiDataList
+                [items]="defaultThemes"
+                [itemContent]="themeContent"
+        ></tui-data-list-wrapper>
+    </tui-select>
+</div>
+
+<ng-template #themeContent let-item>
+    <div class="card-item">
+        <span class="card-name">{{ item.name }}</span>
+    </div>
+</ng-template>

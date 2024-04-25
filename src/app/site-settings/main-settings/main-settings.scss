@@ -1,5 +1,14 @@
 :host {
-    h1 {
-        color: red;
+    .image-file {
+        margin-bottom: 72px;
+        height: 336px;
+
+        > * {
+            height: inherit;
+        }
+
+        & + tui-input {
+            margin-bottom: 24px;
+        }
     }
 }

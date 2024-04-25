@@ -1,0 +1,13 @@
+:host {
+    min-width: 1118px;
+
+    app-theme-settings {
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .settings-body {
+        width: 1104px;
+        margin: 0 auto;
+        padding: 38px 20px 52px;
+    }
+}

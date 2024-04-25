@@ -12,7 +12,44 @@
                 [itemContent]="themeContent"
         ></tui-data-list-wrapper>
     </tui-select>
+
+    <tui-input-color
+            tuiTextfieldSize="m"
+            class="tui-space_vertical-4 m-size"
+            [colors]="palette"
+            [(ngModel)]="backgroundColor"
+    >
+        Цвет бэкгроунда
+    </tui-input-color>
+
+    <tui-input-color
+            tuiTextfieldSize="m"
+            class="tui-space_vertical-4 m-size"
+            [colors]="palette"
+            [(ngModel)]="fontColor"
+    >
+        Цвет шрифта
+    </tui-input-color>
+
+    <tui-input-color
+            tuiTextfieldSize="m"
+            class="tui-space_vertical-4 m-size"
+            [colors]="palette"
+            [(ngModel)]="accentColor"
+    >
+        Акцентный цвет
+    </tui-input-color>
 </div>
+
+<button
+        appearance="primary"
+        tuiButton
+        type="button"
+        size="m"
+        class="tui-space_right-3 tui-space_bottom-3"
+>
+    Build
+</button>
 
 <ng-template #themeContent let-item>
     <div class="card-item">

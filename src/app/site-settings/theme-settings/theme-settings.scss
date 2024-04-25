@@ -1,4 +1,17 @@
 :host {
-    display: block;
+    display: flex;
+    justify-content: space-between;
     padding: 10px 25px;
+
+    .variables {
+        display: flex;
+
+        tui-select {
+            margin-right: 40px;
+        }
+
+        tui-input-color {
+            margin-right: 20px;
+        }
+    }
 }

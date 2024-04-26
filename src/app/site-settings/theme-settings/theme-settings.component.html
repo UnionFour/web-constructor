@@ -1,7 +1,7 @@
 <div class="variables">
     <tui-select
             tuiTextfieldSize="m"
-            class="tui-space_vertical-4 m-size"
+            class="tui-space_vertical-4 base-control"
             [valueContent]="themeContent"
             [(ngModel)]="curTheme"
             (ngModelChange)="changeTheme($event)"
@@ -17,7 +17,7 @@
     <ng-container [formGroup]="form">
         <tui-input-color
                 tuiTextfieldSize="m"
-                class="tui-space_vertical-4 m-size"
+                class="tui-space_vertical-4 base-control"
                 [colors]="palette"
                 formControlName="backgroundColor"
         >
@@ -26,7 +26,7 @@
 
         <tui-input-color
                 tuiTextfieldSize="m"
-                class="tui-space_vertical-4 m-size"
+                class="tui-space_vertical-4 base-control"
                 [colors]="palette"
                 formControlName="fontColor"
         >
@@ -35,7 +35,7 @@
 
         <tui-input-color
                 tuiTextfieldSize="m"
-                class="tui-space_vertical-4 m-size"
+                class="tui-space_vertical-4 base-control"
                 [colors]="palette"
                 formControlName="accentColor"
         >

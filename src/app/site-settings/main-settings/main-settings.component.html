@@ -35,6 +35,7 @@
         tuiTextfieldSize="m"
         [tuiTextfieldCleaner]="true"
         class="m-size"
+        [(ngModel)]="titleValue"
 >
     Заголовок описания
     <input
@@ -44,7 +45,7 @@
 </tui-input>
 
 <tui-editor
-        [formControl]="imageControl"
+        [formControl]="descriptionControl"
         [tools]="tools"
 >
     Описание

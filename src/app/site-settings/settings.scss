@@ -1,13 +1,14 @@
 :host {
-    width: 1104px;
+    width: 100%;
+    min-width: 1118px;
 
     app-theme-settings {
-        width: inherit;
+        min-width: 1118px;
         box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
     }
 
     .settings-body {
-        width: inherit;
+        width: 1104px;
         margin: 0 auto;
         padding: 38px 20px 52px;
     }

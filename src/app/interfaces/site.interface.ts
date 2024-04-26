@@ -1,5 +1,5 @@
 export interface SiteInterface {
-    theme: ThemeVariables;
+    themeVariables: ThemeVariables;
     main: TextWithImage;
     news?: NewsSettings;
     addresses?: AddressesSettings;

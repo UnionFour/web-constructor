@@ -17,6 +17,7 @@ import { NewsSettingsComponent } from './news-settings/news-settings.component';
 import { ServicesSettingsComponent } from './services-settings/services-settings.component';
 import { AddressesSettingsComponent } from './addresses-settings/addresses-settings.component';
 import { InstructorsSettingsComponent } from './instructors-settings/instructors-settings.component';
+import { TuiValueChangesModule } from "@taiga-ui/cdk";
 
 @NgModule({
     imports: [
@@ -30,7 +31,8 @@ import { InstructorsSettingsComponent } from './instructors-settings/instructors
         TuiButtonModule,
         TuiInputFilesModule,
         TuiEditorModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        TuiValueChangesModule
     ],
     declarations: [
         SiteSettingsComponent,

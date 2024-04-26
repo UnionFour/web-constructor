@@ -9,7 +9,7 @@ import { DefaultThemes } from "../fixtures/themes.fixture";
 })
 export class SiteSettingsComponent {
     public site: SiteInterface = {
-        theme: DefaultThemes[0].themeVariables,
+        themeVariables: DefaultThemes[0].themeVariables,
         main: {
             img: './src/assets/images/no_photo.jpg',
             title: 'Школа Кобальт',

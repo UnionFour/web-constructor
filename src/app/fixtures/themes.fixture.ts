@@ -9,9 +9,9 @@ export const DefaultThemes: Theme[] = [
     {
         name: 'Чёрная',
         themeVariables: {
-            backgroundColor: '#fff',
+            backgroundColor: '#b4b4b4',
             fontColor: '#000',
-            accentColor: '#000'
+            accentColor: '#9d2f2f'
         },
     },
     {

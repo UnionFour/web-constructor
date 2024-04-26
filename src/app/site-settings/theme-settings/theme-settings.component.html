@@ -3,42 +3,45 @@
             tuiTextfieldSize="m"
             class="tui-space_vertical-4 m-size"
             [valueContent]="themeContent"
-            [(ngModel)]="value"
+            [(ngModel)]="curTheme"
+            (ngModelChange)="changeTheme($event)"
     >
         Тема
         <tui-data-list-wrapper
                 *tuiDataList
-                [items]="defaultThemes"
+                [items]="themes"
                 [itemContent]="themeContent"
         ></tui-data-list-wrapper>
     </tui-select>
 
-    <tui-input-color
-            tuiTextfieldSize="m"
-            class="tui-space_vertical-4 m-size"
-            [colors]="palette"
-            [(ngModel)]="backgroundColor"
-    >
-        Цвет бэкгроунда
-    </tui-input-color>
+    <ng-container [formGroup]="form">
+        <tui-input-color
+                tuiTextfieldSize="m"
+                class="tui-space_vertical-4 m-size"
+                [colors]="palette"
+                formControlName="backgroundColor"
+        >
+            Цвет бэкгроунда
+        </tui-input-color>
 
-    <tui-input-color
-            tuiTextfieldSize="m"
-            class="tui-space_vertical-4 m-size"
-            [colors]="palette"
-            [(ngModel)]="fontColor"
-    >
-        Цвет шрифта
-    </tui-input-color>
+        <tui-input-color
+                tuiTextfieldSize="m"
+                class="tui-space_vertical-4 m-size"
+                [colors]="palette"
+                formControlName="fontColor"
+        >
+            Цвет шрифта
+        </tui-input-color>
 
-    <tui-input-color
-            tuiTextfieldSize="m"
-            class="tui-space_vertical-4 m-size"
-            [colors]="palette"
-            [(ngModel)]="accentColor"
-    >
-        Акцентный цвет
-    </tui-input-color>
+        <tui-input-color
+                tuiTextfieldSize="m"
+                class="tui-space_vertical-4 m-size"
+                [colors]="palette"
+                formControlName="accentColor"
+        >
+            Акцентный цвет
+        </tui-input-color>
+    </ng-container>
 </div>
 
 <button

@@ -25,12 +25,15 @@ export class MainSettingsComponent extends SettingsBaseComponent {
         switchMap(file => (file ? this.makeRequest(file) : of(null))),
     );
 
-    public createForm(): FormGroup {
+    protected createForm(): FormGroup {
         return this.fb.group({
             img: [this.site?.main.img, {validators: [Validators.required]}],
             title: [this.site?.main.title, {validators: [Validators.required]}],
             text: [this.site?.main.text, {validators: [Validators.required]}],
         });
+    }
+
+    protected override saveSiteSettings() {
     }
 
     onReject(file: TuiFileLike | readonly TuiFileLike[]): void {

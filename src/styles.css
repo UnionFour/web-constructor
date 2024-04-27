@@ -34,3 +34,7 @@ img {
 * {
     box-sizing: border-box;
 }
+
+tui-input-files, tui-file {
+    height: inherit;
+}

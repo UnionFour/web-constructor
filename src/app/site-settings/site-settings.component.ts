@@ -8,6 +8,7 @@ import { DefaultThemes } from "../fixtures/themes.fixture";
     styleUrls: ['./settings.scss']
 })
 export class SiteSettingsComponent {
+    // тут дефолтный объект, для использования в случае создания с нуля
     public site: SiteInterface = {
         themeVariables: DefaultThemes[0].themeVariables,
         main: {
@@ -21,12 +22,12 @@ export class SiteSettingsComponent {
                 {
                     img: './src/assets/images/no_photo.jpg',
                     title: 'Новость1',
-                    text: '<h1>Школа Кобальт - лучший выбор для вас и вашего ребёнка!</h1><p>Звоните нам прямо сейчас!</p>',
+                    text: '<h1>1Школа Кобальт - лучший выбор для вас и вашего ребёнка!</h1><p>Звоните нам прямо сейчас!</p>',
                 },
                 {
                     img: './src/assets/images/no_photo.jpg',
                     title: 'Новость2',
-                    text: '<h1>Школа Кобальт - лучший выбор для вас и вашего ребёнка!</h1><p>Звоните нам прямо сейчас!</p>',
+                    text: '<h1>2Школа Кобальт - лучший выбор для вас и вашего ребёнка!</h1><p>Звоните нам прямо сейчас!</p>',
                 }
             ]
         }

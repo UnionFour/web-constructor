@@ -1,5 +1,39 @@
 :host {
-    h1 {
-        color: red;
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -9px;
+    }
+
+    .news-card {
+        height: 572px;
+        width: 356px;
+        padding: 20px;
+        margin: 9px;
+
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+        border-radius: 16px;
+
+        > *:not(:last-child) {
+            margin-bottom: 10px;
+        }
+    }
+
+    .add-new {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+
+        tui-svg {
+        }
+    }
+
+    .image-input {
+        height: 168px;
+    }
+
+    tui-editor {
+        height: 300px;
     }
 }

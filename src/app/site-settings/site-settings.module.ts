@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 // tui
 import { TuiDataListWrapperModule, TuiInputFilesModule, TuiInputModule, TuiSelectModule } from '@taiga-ui/kit';
-import { TUI_SANITIZER, TuiButtonModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
+import { TUI_SANITIZER, TuiButtonModule, TuiSvgModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TuiInputColorModule } from '@tinkoff/tui-editor';
 import { TuiEditorModule, TUI_EDITOR_EXTENSIONS, TUI_EDITOR_DEFAULT_EXTENSIONS } from '@tinkoff/tui-editor';
@@ -32,7 +32,8 @@ import { TuiValueChangesModule } from "@taiga-ui/cdk";
         TuiInputFilesModule,
         TuiEditorModule,
         ReactiveFormsModule,
-        TuiValueChangesModule
+        TuiValueChangesModule,
+        TuiSvgModule
     ],
     declarations: [
         SiteSettingsComponent,
@@ -60,4 +61,5 @@ import { TuiValueChangesModule } from "@taiga-ui/cdk";
         },
     ]
 })
-export class SiteSettingsModule {}
+export class SiteSettingsModule {
+}

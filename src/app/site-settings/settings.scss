@@ -1,15 +1,21 @@
+$min-width: 1154px;
+
 :host {
-    width: 100%;
-    min-width: 1118px;
+    min-width: $min-width;
 
     app-theme-settings {
-        min-width: 1118px;
+        min-width: $min-width;
         box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
     }
 
     .settings-body {
-        width: 1104px;
+        width: $min-width;
         margin: 0 auto;
-        padding: 38px 20px 52px;
+        padding: 38px 25px 52px;
+
+        > * {
+            display: block;
+            margin-bottom: 72px;
+        }
     }
 }

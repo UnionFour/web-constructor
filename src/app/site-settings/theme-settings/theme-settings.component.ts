@@ -22,9 +22,9 @@ export class ThemeSettingsComponent extends SettingsBaseComponent {
 
     protected createForm(): FormGroup {
         return this.fb.group({
-            backgroundColor: [this.site?.themeVariables.backgroundColor, {validators: [Validators.required]}],
-            fontColor: [this.site?.themeVariables.fontColor, {validators: [Validators.required]}],
-            accentColor: [this.site?.themeVariables.accentColor, {validators: [Validators.required]}],
+            backgroundColor: [this.site.themeVariables.backgroundColor, {validators: [Validators.required]}],
+            fontColor: [this.site.themeVariables.fontColor, {validators: [Validators.required]}],
+            accentColor: [this.site.themeVariables.accentColor, {validators: [Validators.required]}],
         });
     }
 

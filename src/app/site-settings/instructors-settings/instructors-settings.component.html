@@ -1,1 +1,100 @@
-test
+<ng-container [formGroup]="form">
+    <tui-input
+            tuiTextfieldSize="l"
+            [tuiTextfieldCleaner]="true"
+            class="base-control title-input"
+            formControlName="title"
+    >
+        Заголовок тренеров
+        <input
+                tuiTextfield
+                type="text"
+        />
+    </tui-input>
+
+    <div class="cards">
+        <div *ngFor="let instructor of instructorsFormArray.controls; index as i" class="card instructor-card" [formGroup]="getAsFormGroup(instructor)">
+            <button
+                    type="button"
+                    class="delete-button"
+                    (click)="deleteInstructor(i)"
+            >
+                <tui-svg src="tuiIconClose"></tui-svg>
+            </button>
+
+            <div class="card-content">
+                <div class="image-input">
+                    <tui-input-files
+                            *ngIf="!control.value"
+                            accept="image/*"
+                            [formControl]="control"
+                            (reject)="onReject($event)"
+                    ></tui-input-files>
+
+                    <tui-files class="tui-space_top-1">
+                        <tui-file
+                                *ngIf="loadedFiles$ | async as file"
+                                [file]="file"
+                                [showDelete]="control.enabled"
+                                (removed)="removeFile()"
+                        ></tui-file>
+
+                        <tui-file
+                                *ngIf="rejectedFiles$ | async as file"
+                                state="error"
+                                [file]="file"
+                                [showDelete]="control.enabled"
+                                (removed)="clearRejected()"
+                        ></tui-file>
+
+                        <tui-file
+                                *ngIf="loadingFiles$ | async as file"
+                                state="loading"
+                                [file]="file"
+                                [showDelete]="control.enabled"
+                        ></tui-file>
+                    </tui-files>
+                </div>
+                <div class="text-inputs">
+                    <tui-input
+                            tuiTextfieldSize="m"
+                            [tuiTextfieldCleaner]="true"
+                            formControlName="name"
+                    >
+                        ФИО
+                        <input
+                                tuiTextfield
+                                type="text"
+                        />
+                    </tui-input>
+                    <tui-input
+                            tuiTextfieldSize="m"
+                            [tuiTextfieldCleaner]="true"
+                            formControlName="name"
+                    >
+                        Вид спорта
+                        <input
+                                tuiTextfield
+                                type="text"
+                        />
+                    </tui-input>
+                    <tui-editor
+                            formControlName="info"
+                            [tools]="tools"
+                            [floatingToolbar]="true"
+                    >
+                        Информация
+                    </tui-editor>
+                </div>
+            </div>
+        </div>
+
+        <button
+                type="button"
+                class="instructor-card card add-new tui-space_right-3 tui-space_bottom-3"
+                (click)="createInstructor()"
+        >
+            <tui-svg src="tuiIconPlusLarge"></tui-svg>
+        </button>
+    </div>
+</ng-container>

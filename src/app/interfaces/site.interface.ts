@@ -39,7 +39,7 @@ export interface AddressesSettings {
 // instructors
 
 export interface Instructor {
-    image: string;
+    img: string;
     name: string;
     sportType: string;
     info: string;

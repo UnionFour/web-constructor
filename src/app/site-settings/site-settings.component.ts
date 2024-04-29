@@ -15,7 +15,7 @@ export class SiteSettingsComponent {
         main: { img: '', title: 'Школа спорта', text: '' },
         news: { title: 'Наши новости', news: [{ img: '', title: '', text: '' }] },
         addresses: { title: 'Спортивные залы', addresses: [{sportType: 'Баскетбол', address: 'ул. Пушкина д. 60'}] },
-        instructors: { title: 'Преподаватели', instructors: [{ image: '', name: '', sportType: '', info: '' }] },
+        instructors: { title: 'Преподаватели', instructors: [{ img: '', name: 'Василий Аккордон Васильевич', sportType: 'Баскетбол', info: 'Лучший преподаватель в мире' }] },
         services: { title: 'Услуги', services: [{sportType: '', text: '', address: ''}] }
     };
 

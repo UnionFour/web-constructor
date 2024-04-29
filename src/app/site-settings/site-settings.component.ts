@@ -12,7 +12,7 @@ export class SiteSettingsComponent {
     public site: SiteInterface = {
         themeVariables: DefaultThemes[0].themeVariables,
         main: {
-            img: './src/assets/images/no_photo.jpg',
+            img: '',
             title: 'Школа Кобальт',
             text: '<h1>Школа Кобальт - лучший выбор для вас и вашего ребёнка!</h1><p>Звоните нам прямо сейчас!</p>',
         },
@@ -20,12 +20,12 @@ export class SiteSettingsComponent {
             title: 'Наши новости',
             news: [
                 {
-                    img: './src/assets/images/no_photo.jpg',
+                    img: '',
                     title: 'Новость1',
                     text: '<h1>1Школа Кобальт - лучший выбор для вас и вашего ребёнка!</h1><p>Звоните нам прямо сейчас!</p>',
                 },
                 {
-                    img: './src/assets/images/no_photo.jpg',
+                    img: '',
                     title: 'Новость2',
                     text: '<h1>2Школа Кобальт - лучший выбор для вас и вашего ребёнка!</h1><p>Звоните нам прямо сейчас!</p>',
                 }

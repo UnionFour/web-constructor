@@ -38,3 +38,8 @@ img {
 tui-input-files, tui-file {
     height: inherit;
 }
+
+button {
+    background: none;
+    border: none;
+}

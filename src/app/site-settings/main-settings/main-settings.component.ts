@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TuiFileLike } from '@taiga-ui/kit';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { finalize, map, Observable, of, Subject, switchMap, timer } from 'rxjs';
@@ -10,20 +10,23 @@ import { SettingsBaseComponent } from "../settings.base.component";
     templateUrl: './main-settings.component.html',
     styleUrls: ['./main-settings.scss']
 })
-export class MainSettingsComponent extends SettingsBaseComponent {
-    public titleValue: string = 'test';
-
+export class MainSettingsComponent extends SettingsBaseComponent implements OnInit {
     // копипаста из документации тайги
-    readonly imageControl = new FormControl();
-    readonly descriptionControl = new FormControl();
-
     readonly tools: TuiEditorTool[] = defaultEditorTools;
+    public imageControl!: FormControl;
 
-    readonly rejectedFiles$ = new Subject<TuiFileLike | null>();
-    readonly loadingFiles$ = new Subject<TuiFileLike | null>();
-    readonly loadedFiles$ = this.imageControl.valueChanges.pipe(
-        switchMap(file => (file ? this.makeRequest(file) : of(null))),
-    );
+    public rejectedFiles$ = new Subject<TuiFileLike | null>();
+    public loadingFiles$ = new Subject<TuiFileLike | null>();
+    public loadedFiles$!: Observable<any>;
+
+    override ngOnInit() {
+        super.ngOnInit();
+
+        this.imageControl = this.form.controls['img'] as FormControl;
+        this.loadedFiles$ = this.imageControl.valueChanges.pipe(
+            switchMap(file => (file ? this.makeRequest(file) : of(null))),
+        );
+    }
 
     protected createForm(): FormGroup {
         return this.fb.group({
@@ -33,7 +36,7 @@ export class MainSettingsComponent extends SettingsBaseComponent {
         });
     }
 
-    protected override saveSiteSettings() {
+    protected saveSiteSettings() {
         this.site.main = this.form.value;
     }
 

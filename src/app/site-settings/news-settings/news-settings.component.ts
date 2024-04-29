@@ -14,26 +14,28 @@ import { littleToolSet } from "../../fixtures/tui-editor-tools-set.fixture";
 export class NewsSettingsComponent extends SettingsBaseComponent {
     readonly tools: TuiEditorTool[] = littleToolSet;
 
-    protected createForm(): FormGroup {
-        const form = this.fb.group({
-            title: [this.site.news?.title],
-            news: this.fb.array([])
-        });
+    public newsFormArray: FormArray = new FormArray<any>([]);
 
+    protected createForm(): FormGroup {
+        const newsFormArray = new FormArray<any>([]);
         this.site.news?.news.forEach((news) => {
             const newsForm = this.fb.group({
                 img: [news.img],
                 title: [news.title],
                 text: [news.text]
             });
-            (form.controls['news'] as FormArray).push(newsForm);
+            newsFormArray.push(newsForm);
         });
+        this.newsFormArray = newsFormArray;
 
-        return form;
+        return this.fb.group({
+            title: [this.site.news?.title],
+            news: newsFormArray
+        });
     }
 
     public createNews() {
-        this.getNewsFormArray().push(this.fb.group({
+        this.newsFormArray.push(this.fb.group({
             img: [''],
             title: [''],
             text: ['']
@@ -41,19 +43,15 @@ export class NewsSettingsComponent extends SettingsBaseComponent {
     }
 
     public deleteNews(index: number) {
-        this.getNewsFormArray().removeAt(index);
+        this.newsFormArray.removeAt(index);
     }
 
     protected saveSiteSettings(value: any) {
         this.site.news = this.form.value;
     }
 
-    private getNewsFormArray() {
-        return this.form.controls['news'] as FormArray;
-    }
-
     public getNewsFormGroup(i: number) {
-        return this.getNewsFormArray().controls[i] as FormGroup;
+        return this.newsFormArray.controls[i] as FormGroup;
     }
 
     // копипаст из тайнги
@@ -94,6 +92,4 @@ export class NewsSettingsComponent extends SettingsBaseComponent {
             finalize(() => this.loadingFiles$.next(null)),
         );
     }
-
-    protected readonly defaultEditorTools = defaultEditorTools;
 }

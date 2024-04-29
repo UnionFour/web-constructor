@@ -1,52 +1,54 @@
-<div class="image-file">
-    <tui-input-files
-            *ngIf="!imageControl.value"
-            accept="image/*"
-            [formControl]="imageControl"
-            (reject)="onReject($event)"
-    ></tui-input-files>
+<ng-container [formGroup]="form">
+    <div class="image-file">
+        <tui-input-files
+                *ngIf="!imageControl.value"
+                accept="image/*"
+                formControlName="img"
+                (reject)="onReject($event)"
+        ></tui-input-files>
 
-    <tui-files class="tui-space_top-1">
-        <tui-file
-                *ngIf="loadedFiles$ | async as file"
-                [file]="file"
-                [showDelete]="imageControl.enabled"
-                (removed)="removeFile()"
-        ></tui-file>
+        <tui-files class="tui-space_top-1">
+            <tui-file
+                    *ngIf="loadedFiles$ | async as file"
+                    [file]="file"
+                    [showDelete]="imageControl.enabled"
+                    (removed)="removeFile()"
+            ></tui-file>
 
-        <tui-file
-                *ngIf="rejectedFiles$ | async as file"
-                state="error"
-                [file]="file"
-                [showDelete]="imageControl.enabled"
-                (removed)="clearRejected()"
-        ></tui-file>
+            <tui-file
+                    *ngIf="rejectedFiles$ | async as file"
+                    state="error"
+                    [file]="file"
+                    [showDelete]="imageControl.enabled"
+                    (removed)="clearRejected()"
+            ></tui-file>
 
-        <tui-file
-                *ngIf="loadingFiles$ | async as file"
-                state="loading"
-                [file]="file"
-                [showDelete]="imageControl.enabled"
-        ></tui-file>
-    </tui-files>
-</div>
+            <tui-file
+                    *ngIf="loadingFiles$ | async as file"
+                    state="loading"
+                    [file]="file"
+                    [showDelete]="imageControl.enabled"
+            ></tui-file>
+        </tui-files>
+    </div>
 
-<tui-input
-        tuiTextfieldSize="l"
-        [tuiTextfieldCleaner]="true"
-        class="base-control title-input"
-        [(ngModel)]="titleValue"
->
-    Заголовок описания
-    <input
-            tuiTextfield
-            type="text"
-    />
-</tui-input>
+    <tui-input
+            tuiTextfieldSize="l"
+            [tuiTextfieldCleaner]="true"
+            class="base-control title-input"
+            formControlName="title"
+    >
+        Заголовок описания
+        <input
+                tuiTextfield
+                type="text"
+        />
+    </tui-input>
 
-<tui-editor
-        [formControl]="descriptionControl"
-        [tools]="tools"
->
-    Описание
-</tui-editor>
+    <tui-editor
+            formControlName="text"
+            [tools]="tools"
+    >
+        Описание
+    </tui-editor>
+</ng-container>

@@ -1,64 +1,15 @@
 :host {
     .cards {
-        display: flex;
-        flex-wrap: wrap;
         margin: -9px;
     }
 
     .news-card {
         height: 572px;
         width: 356px;
-        padding: 20px;
         margin: 9px;
-        position: relative;
-
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
-        border-radius: 16px;
 
         > *:not(:last-child) {
             margin-bottom: 10px;
-        }
-
-        .delete-button {
-            position: absolute;
-            right: 0;
-            top: 0;
-            padding: 3px;
-
-            background: none;
-            border: none;
-            cursor: pointer;
-
-            tui-svg {
-                color: rgb(27, 31, 59, 0.5);
-                transition: color 0.3s linear;
-            }
-
-            &:hover tui-svg {
-                color: rgb(27, 31, 59, 0.7);
-            }
-        }
-    }
-
-    .add-new {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0;
-        transition: background-color 0.3s linear;
-        cursor: pointer;
-
-        tui-svg {
-            color: rgb(27, 31, 59, 0.5);
-            transition: color 0.3s linear;
-        }
-
-        &:hover {
-            background: rgb(108, 134, 226, 0.05);
-
-            tui-svg {
-                color: rgb(27, 31, 59, 0.7);
-            }
         }
     }
 

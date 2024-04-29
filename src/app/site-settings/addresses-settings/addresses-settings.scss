@@ -1,5 +1,27 @@
 :host {
-    h1 {
-        color: red;
+    .cards {
+        margin: -10px 0;
+    }
+
+    .address-card {
+        display: flex;
+        margin: 10px 0;
+
+        tui-input {
+            &.sport-type {
+                width: 316px;
+                margin-right: 20px;
+            }
+
+            &.address {
+                width: 728px;
+            }
+        }
+    }
+
+    .add-new {
+        height: 84px;
+        width: 100%;
+        margin: 10px 0;
     }
 }

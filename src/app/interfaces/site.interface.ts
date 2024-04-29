@@ -1,9 +1,10 @@
 export interface SiteInterface {
     themeVariables: ThemeVariables;
     main: TextWithImage;
-    news?: NewsSettings;
-    addresses?: AddressesSettings;
-    services?: ServicesSettings;
+    news: NewsSettings;
+    addresses: AddressesSettings;
+    instructors: InstructorsSettings;
+    services: ServicesSettings;
 }
 
 export interface ThemeVariables {
@@ -44,7 +45,7 @@ export interface Instructor {
     info: string;
 }
 
-export interface IstructorsSettings {
+export interface InstructorsSettings {
     title: string;
     instructors: Instructor[];
 }

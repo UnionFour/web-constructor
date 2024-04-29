@@ -3,8 +3,9 @@ import { SettingsBaseComponent } from "../settings.base.component";
 import { FormArray, FormControl, FormGroup } from "@angular/forms";
 import { finalize, map, Observable, of, Subject, switchMap, timer } from "rxjs";
 import { TuiFileLike } from "@taiga-ui/kit";
-import { defaultEditorTools, TuiEditorTool } from "@tinkoff/tui-editor";
+import { TuiEditorTool } from "@tinkoff/tui-editor";
 import { littleToolSet } from "../../fixtures/tui-editor-tools-set.fixture";
+import { getAsFormGroup } from "../../utils/utils";
 
 @Component({
     selector: 'app-news-settings',
@@ -14,6 +15,7 @@ import { littleToolSet } from "../../fixtures/tui-editor-tools-set.fixture";
 export class NewsSettingsComponent extends SettingsBaseComponent {
     readonly tools: TuiEditorTool[] = littleToolSet;
 
+    public readonly getAsFormGroup = getAsFormGroup;
     public newsFormArray: FormArray = new FormArray<any>([]);
 
     protected createForm(): FormGroup {
@@ -48,10 +50,6 @@ export class NewsSettingsComponent extends SettingsBaseComponent {
 
     protected saveSiteSettings(value: any) {
         this.site.news = this.form.value;
-    }
-
-    public getNewsFormGroup(i: number) {
-        return this.newsFormArray.controls[i] as FormGroup;
     }
 
     // копипаст из тайнги

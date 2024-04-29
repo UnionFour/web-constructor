@@ -1,1 +1,58 @@
-test
+<ng-container [formGroup]="form">
+    <tui-input
+            tuiTextfieldSize="l"
+            [tuiTextfieldCleaner]="true"
+            class="base-control title-input"
+            formControlName="title"
+    >
+        Заголовок адресов
+        <input
+                tuiTextfield
+                type="text"
+        />
+    </tui-input>
+
+    <div class="cards">
+        <div *ngFor="let address of addressesFormArray.controls; index as i" class="card address-card" [formGroup]="getAsFormGroup(address)">
+            <button
+                    type="button"
+                    class="delete-button"
+                    (click)="deleteAddress(i)"
+            >
+                <tui-svg src="tuiIconClose"></tui-svg>
+            </button>
+            <tui-input
+                    tuiTextfieldSize="m"
+                    [tuiTextfieldCleaner]="true"
+                    formControlName="sportType"
+                    class="sport-type"
+            >
+                Вид спорта
+                <input
+                        tuiTextfield
+                        type="text"
+                />
+            </tui-input>
+            <tui-input
+                    tuiTextfieldSize="m"
+                    [tuiTextfieldCleaner]="true"
+                    formControlName="address"
+                    class="address"
+            >
+                Адрес
+                <input
+                        tuiTextfield
+                        type="text"
+                />
+            </tui-input>
+        </div>
+
+        <button
+                type="button"
+                class="card add-new tui-space_right-3 tui-space_bottom-3"
+                (click)="createAddress()"
+        >
+            <tui-svg src="tuiIconPlusLarge"></tui-svg>
+        </button>
+    </div>
+</ng-container>

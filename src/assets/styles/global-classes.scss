@@ -14,3 +14,59 @@
 .title-input {
     margin-bottom: 24px;
 }
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+    border-radius: 16px;
+    position: relative;
+
+    &:not(.add-new) {
+        padding: 20px;
+    }
+
+    .delete-button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 3px;
+
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        tui-svg {
+            color: rgb(27, 31, 59, 0.5);
+            transition: color 0.3s linear;
+        }
+
+        &:hover tui-svg {
+            color: rgb(27, 31, 59, 0.7);
+        }
+    }
+}
+
+.add-new {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s linear;
+    cursor: pointer;
+
+    tui-svg {
+        color: rgb(27, 31, 59, 0.5);
+        transition: color 0.3s linear;
+    }
+
+    &:hover {
+        background: rgb(108, 134, 226, 0.05);
+
+        tui-svg {
+            color: rgb(27, 31, 59, 0.7);
+        }
+    }
+}

@@ -16,7 +16,7 @@ export class SiteSettingsComponent {
         news: { title: 'Наши новости', news: [{ img: '', title: '', text: '' }] },
         addresses: { title: 'Спортивные залы', addresses: [{sportType: 'Баскетбол', address: 'ул. Пушкина д. 60'}] },
         instructors: { title: 'Преподаватели', instructors: [{ img: '', name: 'Василий Аккордон Васильевич', sportType: 'Баскетбол', info: 'Лучший преподаватель в мире' }] },
-        services: { title: 'Услуги', services: [{sportType: '', text: '', address: ''}] }
+        services: { title: 'Услуги', services: [{sportType: '', text: '', address: '', buttonWording: 'Записаться'}] }
     };
 
     public site: SiteInterface = this.defaultSite;

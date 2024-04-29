@@ -1,1 +1,85 @@
-test
+<ng-container [formGroup]="form">
+    <tui-input
+            tuiTextfieldSize="l"
+            [tuiTextfieldCleaner]="true"
+            class="base-control title-input"
+            formControlName="title"
+    >
+        Заголовок услуг
+        <input
+                tuiTextfield
+                type="text"
+        />
+    </tui-input>
+
+    <div class="cards">
+        <div *ngFor="let service of servicesFormArray.controls; index as i" class="card service-card" [formGroup]="getAsFormGroup(service)">
+            <button
+                    type="button"
+                    class="delete-button"
+                    (click)="deleteService(i)"
+            >
+                <tui-svg src="tuiIconClose"></tui-svg>
+            </button>
+            <div class="row-top">
+                <tui-input
+                        tuiTextfieldSize="m"
+                        [tuiTextfieldCleaner]="true"
+                        formControlName="sportType"
+                        class="sport-type"
+                >
+                    Вид спорта
+                    <input
+                            tuiTextfield
+                            type="text"
+                    />
+                </tui-input>
+                <tui-input
+                        tuiTextfieldSize="m"
+                        [tuiTextfieldCleaner]="true"
+                        formControlName="address"
+                        class="address"
+                >
+                    Адрес
+                    <input
+                            tuiTextfield
+                            type="text"
+                    />
+                </tui-input>
+            </div>
+            <div class="row-bottom">
+                <tui-input
+                        tuiTextfieldSize="m"
+                        [tuiTextfieldCleaner]="true"
+                        formControlName="info"
+                >
+                    Описание
+                    <input
+                            tuiTextfield
+                            type="text"
+                    />
+                </tui-input>
+                <tui-input
+                        tuiTextfieldSize="m"
+                        [tuiTextfieldCleaner]="true"
+                        formControlName="buttonWording"
+                >
+                    Кнопка заявки
+                    <input
+                            tuiTextfield
+                            type="text"
+                    />
+                </tui-input>
+            </div>
+        </div>
+
+        <button
+                type="button"
+                class="card add-new service-card tui-space_right-3 tui-space_bottom-3"
+                (click)="createService()"
+        >
+            <tui-svg src="tuiIconPlusLarge"></tui-svg>
+        </button>
+    </div>
+</ng-container>
+

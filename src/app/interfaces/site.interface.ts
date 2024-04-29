@@ -56,6 +56,7 @@ export interface Service {
     sportType: string;
     text: string;
     address: string;
+    buttonWording: string;
 }
 
 export interface ServicesSettings {

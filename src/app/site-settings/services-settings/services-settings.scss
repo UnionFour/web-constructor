@@ -1,5 +1,41 @@
 :host {
-    h1 {
-        color: red;
+    .cards {
+        margin: -10px 0;
+    }
+
+    .service-card {
+        margin: 10px 0;
+        width: 100%;
+        height: 148px;
+
+        div[class^="row-"] {
+            display: flex;
+
+            *:first-child {
+                margin-right: 20px;
+            }
+        }
+
+        .row-top {
+            margin-bottom: 20px;
+
+            tui-input:first-child {
+                width: 316px;
+            }
+
+            tui-input:last-child {
+                width: 728px;
+            }
+        }
+
+        .row-bottom {
+            tui-input:first-child {
+                width: 904px;
+            }
+
+            tui-input:last-child {
+                width: 140px;
+            }
+        }
     }
 }

@@ -24,12 +24,6 @@ export class BuilderService {
             formData.append(file.name, file, file.name);
         }
 
-        const requestOptions = {
-            method: "POST",
-            body: formData,
-            redirect: "follow"
-        };
-
         this.http.post('http://178.154.224.222:5282/build', formData);
     }
 }

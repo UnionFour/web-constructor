@@ -8,7 +8,7 @@ export class BuilderService {
     constructor(private http: HttpClient) {
     }
 
-    private Build(organisation: string,
+    public build(organisation: string,
                   config: object,
                   ...files: File[]): void {
 
@@ -24,6 +24,6 @@ export class BuilderService {
             formData.append(file.name, file, file.name);
         }
 
-        this.http.post('http://178.154.224.222:5282/build', formData);
+        this.http.post('http://178.154.224.222/build', formData);
     }
 }

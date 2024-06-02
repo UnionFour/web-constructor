@@ -21,3 +21,23 @@
         height: 300px;
     }
 }
+
+@media (max-width: 630px) {
+    :host {
+        .news-card {
+            height: 364px;
+        }
+
+        .image-input {
+            height: 100px;
+        }
+
+        tui-editor {
+            height: 160px;
+        }
+
+        .add-new {
+            height: 50px;
+        }
+    }
+}

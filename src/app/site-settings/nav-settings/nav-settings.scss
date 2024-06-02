@@ -15,10 +15,15 @@
                 width: 100%;
                 align-items: center;
 
-                * {
+                & > * {
                     width: 100%;
-                    max-width: 143px;
-                    min-width: 115px;
+                    max-width: 140px;
+                    min-width: 120px;
+
+                    &.company-name {
+                        max-width: 162px;
+                        min-width: 130px;
+                    }
 
                     &:not(:last-child) {
                         margin-right: 10px;
@@ -43,6 +48,10 @@
         tui-input-files ::ng-deep *, tui-file ::ng-deep * {
             max-height: 44px;
             min-height: 10px;
+        }
+
+        tui-file ::ng-deep .t-preview.ng-star-inserted {
+            margin-right: 0;
         }
 
         tui-input-files ::ng-deep label .t-description .ng-star-inserted {

@@ -41,3 +41,26 @@
         margin: 10px 0;
     }
 }
+
+@media (max-width: 630px) {
+    :host {
+        .address-card {
+            .row {
+                flex-direction: column;
+                flex-wrap: nowrap;
+
+                > * {
+                    width: 100%;
+
+                    &:not(:last-child) {
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+
+        .add-new {
+            height: 50px;
+        }
+    }
+}

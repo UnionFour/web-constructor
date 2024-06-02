@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { SiteInterface } from "../interfaces/site.interface";
 import { DefaultThemes } from "../fixtures/themes.fixture";
-import { FormBuilder, FormGroup } from "@angular/forms";
 
 @Component({
     selector: 'app-site-settings',
     templateUrl: './site-settings.component.html',
     styleUrls: ['./settings.scss']
 })
-export class SiteSettingsComponent {
+export class SiteSettingsComponent { // to do: разделяем файлы и настройки текстом
     // тут дефолтный объект, для использования в случае создания с нуля
     private readonly defaultSite: SiteInterface = {
         navigation: { logoImg: '', companyName: 'Школа спорта', description: 'О нас', news: 'Наши новости', addresses: 'Спортивные залы', instructors: 'Преподаватели', services: 'Услуги' },

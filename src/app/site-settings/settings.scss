@@ -4,6 +4,10 @@ $max-width: 1154px;
 :host {
     app-theme-settings {
         box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+        position: sticky;
+        z-index: 10;
+        top: 0;
+        left: 0;
     }
 
     .settings-body {
@@ -22,6 +26,14 @@ $max-width: 1154px;
             &:not(:first-child) {
                 margin-bottom: 72px;
             }
+        }
+    }
+}
+
+@media (max-width: 630px) {
+    :host {
+        .settings-body {
+            padding: 34px 15px 52px;
         }
     }
 }

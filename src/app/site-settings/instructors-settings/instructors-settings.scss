@@ -33,3 +33,33 @@
         }
     }
 }
+
+@media (max-width: 630px) {
+    :host {
+        .image-input {
+            width: 130px;
+        }
+
+        .instructor-card {
+            width: calc(100% - 20px);
+        }
+
+        .text-inputs {
+            width: 100%;
+
+            > * {
+                margin-bottom: 10px;
+                width: 100%;
+            }
+
+            tui-editor {
+                height: 133px;
+                min-height: 133px;
+            }
+        }
+
+        .add-new {
+            height: 50px;
+        }
+    }
+}

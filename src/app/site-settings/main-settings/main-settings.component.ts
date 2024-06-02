@@ -23,9 +23,10 @@ export class MainSettingsComponent extends SettingsBaseComponent implements OnIn
         super.ngOnInit();
 
         this.imageControl = this.form.controls['img'] as FormControl;
-        this.loadedFiles$ = this.imageControl.valueChanges.pipe(
-            switchMap(file => (file ? this.makeRequest(file) : of(null))),
-        );
+        // this.loadedFiles$ = this.imageControl.valueChanges.pipe(
+        //     switchMap(file => (file ? this.makeRequest(file) : of(null))),
+        // );
+        this.imageControl.valueChanges.subscribe((v) => console.log(this.imageControl));
     }
 
     protected createForm(): FormGroup {

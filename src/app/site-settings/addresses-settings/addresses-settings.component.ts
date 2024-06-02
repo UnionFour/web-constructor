@@ -17,8 +17,10 @@ export class AddressesSettingsComponent extends SettingsBaseComponent {
         const addressesFormArray = new FormArray<any>([]);
         this.site.addresses.addresses.forEach((address) => {
             const addressForm = this.fb.group({
-                sportType: [address.sportType],
-                address: [address.address]
+                description: [address.description],
+                address: [address.address],
+                alt: [address.alt],
+                lat: [address.lat]
             });
             addressesFormArray.push(addressForm);
         });

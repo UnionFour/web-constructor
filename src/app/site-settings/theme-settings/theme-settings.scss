@@ -1,10 +1,20 @@
 :host {
     display: flex;
     justify-content: space-between;
-    padding: 10px 25px;
+    align-items: end;
+    padding: 5px 25px;
+    background: #fff;
 
     .variables {
         display: flex;
+
+        & > * {
+            padding: 5px 0;
+        }
+
+        .colors {
+            display: flex;
+        }
 
         tui-select {
             margin-right: 40px;
@@ -12,6 +22,77 @@
 
         tui-input-color {
             margin-right: 20px;
+            width: 220px;
+        }
+    }
+
+    .button-container {
+        padding: 5px 0;
+    }
+}
+
+@media (max-width: 1141px) {
+    :host {
+        .variables {
+            width: 100%;
+
+            .colors {
+                width: 100%;
+            }
+
+            tui-input-color {
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 880px) {
+    :host {
+        .variables {
+            flex-wrap: wrap;
+            align-items: center;
+        }
+    }
+}
+
+@media (max-width: 630px) {
+    :host {
+        display: contents;
+        padding: 0;
+
+        .variables {
+            display: block;
+            padding: 5px 12px;
+        }
+
+        .theme tui-select {
+            width: 100%;
+        }
+
+        .colors {
+            flex-direction: column;
+
+            tui-input-color {
+                width: 100%;
+
+                &:not(:last-child) {
+                    margin-bottom: 5px;
+                }
+            }
+        }
+
+        .button-container {
+            width: 100%;
+            padding: 10px 12px;
+            position: sticky;
+            z-index: 100;
+            top: 10px;
+            left: 10px;
+
+            button {
+                width: 100%;
+            }
         }
     }
 }

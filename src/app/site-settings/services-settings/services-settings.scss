@@ -39,3 +39,32 @@
         }
     }
 }
+
+@media (max-width: 630px) {
+    :host {
+        .service-card {
+            height: 246px;
+
+            div[class^="row-"] {
+                flex-direction: column;
+                margin: 0;
+
+                &:not(:last-child) {
+                    margin-bottom: 10px;
+                }
+
+                > * {
+                    width: 100%!important;
+
+                    &:not(:last-child) {
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+
+        .add-new {
+            height: 50px;
+        }
+    }
+}

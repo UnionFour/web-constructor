@@ -1,10 +1,21 @@
 export interface SiteInterface {
+    navigation: NavigationItems;
     themeVariables: ThemeVariables;
     main: TextWithImage;
     news: NewsSettings;
     addresses: AddressesSettings;
     instructors: InstructorsSettings;
     services: ServicesSettings;
+}
+
+export interface NavigationItems {
+    logoImg: string;
+    companyName: string;
+    description: string;
+    news: string;
+    addresses: string;
+    instructors: string;
+    services: string;
 }
 
 export interface ThemeVariables {
@@ -27,8 +38,10 @@ export interface NewsSettings {
 // addresses
 
 export interface Address {
-    sportType: string;
+    description: string;
     address: string;
+    alt: number; // высота
+    lat: number; // ширина
 }
 
 export interface AddressesSettings {

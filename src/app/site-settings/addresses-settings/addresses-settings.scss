@@ -4,17 +4,33 @@
     }
 
     .address-card {
-        display: flex;
         margin: 10px 0;
+        width: 100%;
+
+        .row {
+            display: flex;
+
+            &:last-child {
+                margin-top: 20px;
+            }
+        }
 
         tui-input {
-            &.sport-type {
-                width: 316px;
+            &.description {
+                width: 350px;
                 margin-right: 20px;
             }
 
             &.address {
-                width: 728px;
+                width: 100%;
+            }
+
+            &.coords {
+                width: 50%;
+            }
+
+            &.alt {
+                margin-right: 20px;
             }
         }
     }
@@ -23,5 +39,28 @@
         height: 84px;
         width: 100%;
         margin: 10px 0;
+    }
+}
+
+@media (max-width: 630px) {
+    :host {
+        .address-card {
+            .row {
+                flex-direction: column;
+                flex-wrap: nowrap;
+
+                > * {
+                    width: 100%;
+
+                    &:not(:last-child) {
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+
+        .add-new {
+            height: 50px;
+        }
     }
 }

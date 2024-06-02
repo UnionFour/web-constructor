@@ -4,3 +4,15 @@
         height: 336px;
     }
 }
+
+@media (max-width: 630px) {
+    :host {
+        .image-file {
+            height: 150px;
+        }
+
+        tui-editor {
+            height: 420px;
+        }
+    }
+}

@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { SettingsBaseComponent } from "../settings.base.component";
-import { FormArray, FormControl, FormGroup } from "@angular/forms";
+import { FormArray, FormGroup } from "@angular/forms";
 import { getAsFormGroup } from "../../utils/utils";
-import { finalize, map, Observable, of, Subject, switchMap, timer } from "rxjs";
-import { TuiFileLike } from "@taiga-ui/kit";
 import { littleToolSet } from "../../fixtures/tui-editor-tools-set.fixture";
 import { TuiEditorTool } from "@tinkoff/tui-editor";
+import { getAsFormControl } from "../../utils/utils";
 
 @Component({
     selector: 'app-instructors-settings',
@@ -15,6 +14,7 @@ import { TuiEditorTool } from "@tinkoff/tui-editor";
 export class InstructorsSettingsComponent extends SettingsBaseComponent {
     readonly tools: TuiEditorTool[] = littleToolSet;
     public readonly getAsFormGroup = getAsFormGroup;
+    public readonly getAsFormControl = getAsFormControl;
 
     public instructorsFormArray: FormArray = new FormArray<any>([]);
 
@@ -53,45 +53,4 @@ export class InstructorsSettingsComponent extends SettingsBaseComponent {
     public deleteInstructor(index: number) {
         this.instructorsFormArray.removeAt(index);
     }
-
-    // копипаст из тайнги
-    readonly control = new FormControl();
-
-    readonly rejectedFiles$ = new Subject<TuiFileLike | null>();
-    readonly loadingFiles$ = new Subject<TuiFileLike | null>();
-    readonly loadedFiles$ = this.control.valueChanges.pipe(
-        switchMap(file => (file ? this.makeRequest(file) : of(null))),
-    );
-
-    onReject(file: TuiFileLike | readonly TuiFileLike[]): void {
-        this.rejectedFiles$.next(file as TuiFileLike);
-    }
-
-    removeFile(): void {
-        this.control.setValue(null);
-    }
-
-    clearRejected(): void {
-        this.removeFile();
-        this.rejectedFiles$.next(null);
-    }
-
-    makeRequest(file: TuiFileLike): Observable<TuiFileLike | null> {
-        this.loadingFiles$.next(file);
-
-        return timer(1000).pipe(
-            map(() => {
-                if (Math.random() > 0.5) {
-                    return file;
-                }
-
-                this.rejectedFiles$.next(file);
-
-                return null;
-            }),
-            finalize(() => this.loadingFiles$.next(null)),
-        );
-    }
-
-    protected readonly littleToolSet = littleToolSet;
 }

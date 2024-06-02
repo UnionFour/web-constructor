@@ -25,33 +25,17 @@
             <div class="card-content">
                 <div class="image-input">
                     <tui-input-files
-                            *ngIf="!control.value"
+                            *ngIf="!getAsFormControl(instructor.get('img')).value"
                             accept="image/*"
-                            [formControl]="control"
-                            (reject)="onReject($event)"
+                            formControlName="img"
                     ></tui-input-files>
 
                     <tui-files class="tui-space_top-1">
                         <tui-file
-                                *ngIf="loadedFiles$ | async as file"
-                                [file]="file"
-                                [showDelete]="control.enabled"
-                                (removed)="removeFile()"
-                        ></tui-file>
-
-                        <tui-file
-                                *ngIf="rejectedFiles$ | async as file"
-                                state="error"
-                                [file]="file"
-                                [showDelete]="control.enabled"
-                                (removed)="clearRejected()"
-                        ></tui-file>
-
-                        <tui-file
-                                *ngIf="loadingFiles$ | async as file"
-                                state="loading"
-                                [file]="file"
-                                [showDelete]="control.enabled"
+                                *ngIf="getAsFormControl(instructor.get('img')).value"
+                                [file]="getAsFormControl(instructor.get('img')).value"
+                                [showDelete]="getAsFormControl(instructor.get('img')).enabled"
+                                (removed)="getAsFormControl(instructor.get('img')).setValue(null)"
                         ></tui-file>
                     </tui-files>
                 </div>

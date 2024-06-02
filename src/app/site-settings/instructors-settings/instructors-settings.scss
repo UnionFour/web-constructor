@@ -17,6 +17,10 @@
     .image-input {
         height: 100%;
         width: 241px;
+
+        > * {
+            height: 100%;
+        }
     }
 
     .text-inputs {

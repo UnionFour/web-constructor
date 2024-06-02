@@ -1,4 +1,4 @@
-<app-theme-settings [site]="site"></app-theme-settings>
+<app-theme-settings [site]="site" (building$)="onBuild()"></app-theme-settings>
 <div class="settings-body">
     <app-nav-settings [site]="site"></app-nav-settings>
     <app-main-settings [site]="site"></app-main-settings>

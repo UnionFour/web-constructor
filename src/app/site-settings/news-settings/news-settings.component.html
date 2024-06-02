@@ -23,33 +23,17 @@
             </button>
             <div class="image-input">
                 <tui-input-files
-                        *ngIf="!control.value"
+                        *ngIf="!getAsFormControl(news.get('img')).value"
                         accept="image/*"
-                        [formControl]="control"
-                        (reject)="onReject($event)"
+                        formControlName="img"
                 ></tui-input-files>
 
                 <tui-files class="tui-space_top-1">
                     <tui-file
-                            *ngIf="loadedFiles$ | async as file"
-                            [file]="file"
-                            [showDelete]="control.enabled"
-                            (removed)="removeFile()"
-                    ></tui-file>
-
-                    <tui-file
-                            *ngIf="rejectedFiles$ | async as file"
-                            state="error"
-                            [file]="file"
-                            [showDelete]="control.enabled"
-                            (removed)="clearRejected()"
-                    ></tui-file>
-
-                    <tui-file
-                            *ngIf="loadingFiles$ | async as file"
-                            state="loading"
-                            [file]="file"
-                            [showDelete]="control.enabled"
+                            *ngIf="getAsFormControl(news.get('img')).value"
+                            [file]="getAsFormControl(news.get('img')).value"
+                            [showDelete]="getAsFormControl(news.get('img')).enabled"
+                            (removed)="getAsFormControl(news.get('img')).setValue(null)"
                     ></tui-file>
                 </tui-files>
             </div>

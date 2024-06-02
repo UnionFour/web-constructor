@@ -8,7 +8,7 @@ export class BuilderService {
 
     public build(organisation: string,
                   config: object,
-                  ...files: File[]): void {
+                  files: File[]): void {
 
         let config_blob = new Blob([JSON.stringify(config, null, 2)], {
             type: "application/json",

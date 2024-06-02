@@ -29,6 +29,35 @@ export class SiteSettingsComponent {
     public onBuild() {
         console.log(this.site);
 
+        // не очень красиво разделяем изображения и текстовые настройки
         const images: File[] = [];
+        const siteSettings: any = structuredClone(this.site);
+        this.separationTextAndImages(siteSettings, images);
+
+        this.builder.build('test', siteSettings, images);
+        console.log(siteSettings);
+        console.log(images);
+    }
+
+    private separationTextAndImages(object: any, images: File[], parentKey?: string) { // доработать нейминги внутри масивов
+        for (const [settingKey, setting] of Object.entries(object)) {
+            if (setting instanceof File) {
+                const nameParts = setting.name.split('.');
+                this.renameFile(setting, `${parentKey}.${nameParts[nameParts.length - 1]}`);
+                images.push(setting);
+                delete object[settingKey];
+            } else if (setting instanceof Array) {
+                this.separationTextAndImages(setting, images, (settingKey + parentKey));
+            } else if (setting instanceof Object) {
+                this.separationTextAndImages(setting, images, settingKey);
+            }
+        }
+    }
+
+    private renameFile(file: File, newName: string) {
+        Object.defineProperty(file, 'name', {
+            writable: true,
+            value: newName
+        });
     }
 }

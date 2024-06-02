@@ -1,21 +1,27 @@
-$min-width: 1154px;
+$min-width: 880px; // включаем резину на мобилку
+$max-width: 1154px;
 
 :host {
-    min-width: $min-width;
-
     app-theme-settings {
-        min-width: $min-width;
         box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
     }
 
     .settings-body {
-        width: $min-width;
+        max-width: $max-width;
         margin: 0 auto;
-        padding: 38px 25px 52px;
+        padding: 34px 25px 52px;
 
         > * {
             display: block;
-            margin-bottom: 72px;
+
+            &:first-child {
+                display: block;
+                margin-bottom: 34px;
+            }
+
+            &:not(:first-child) {
+                margin-bottom: 72px;
+            }
         }
     }
 }

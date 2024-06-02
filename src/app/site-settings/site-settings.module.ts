@@ -3,7 +3,13 @@ import { CommonModule } from '@angular/common';
 
 // tui
 import { TuiDataListWrapperModule, TuiInputFilesModule, TuiInputModule, TuiSelectModule } from '@taiga-ui/kit';
-import { TUI_SANITIZER, TuiButtonModule, TuiSvgModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
+import {
+    TUI_SANITIZER,
+    TuiButtonModule,
+    TuiScrollbarModule,
+    TuiSvgModule,
+    TuiTextfieldControllerModule
+} from '@taiga-ui/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TuiInputColorModule } from '@tinkoff/tui-editor';
 import { TuiEditorModule, TUI_EDITOR_EXTENSIONS, TUI_EDITOR_DEFAULT_EXTENSIONS } from '@tinkoff/tui-editor';
@@ -18,6 +24,7 @@ import { ServicesSettingsComponent } from './services-settings/services-settings
 import { AddressesSettingsComponent } from './addresses-settings/addresses-settings.component';
 import { InstructorsSettingsComponent } from './instructors-settings/instructors-settings.component';
 import { TuiValueChangesModule } from "@taiga-ui/cdk";
+import { NavSettingsComponent } from "./nav-settings/nav-settings.component";
 
 @NgModule({
     imports: [
@@ -33,7 +40,8 @@ import { TuiValueChangesModule } from "@taiga-ui/cdk";
         TuiEditorModule,
         ReactiveFormsModule,
         TuiValueChangesModule,
-        TuiSvgModule
+        TuiSvgModule,
+        TuiScrollbarModule
     ],
     declarations: [
         SiteSettingsComponent,
@@ -42,7 +50,8 @@ import { TuiValueChangesModule } from "@taiga-ui/cdk";
         NewsSettingsComponent,
         ServicesSettingsComponent,
         AddressesSettingsComponent,
-        InstructorsSettingsComponent
+        InstructorsSettingsComponent,
+        NavSettingsComponent
     ],
     providers: [
         {

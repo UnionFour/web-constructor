@@ -1,0 +1,64 @@
+:host {
+    .card {
+        padding: 0 20px;
+
+        tui-scrollbar {
+            overflow-y: hidden;
+            padding: 14px 0;
+
+            ::ng-deep tui-scroll-controls > .t-bar.t-bar_horizontal {
+                bottom: -14px;
+            }
+
+            ::ng-deep > .t-content {
+                display: flex;
+                width: 100%;
+                align-items: center;
+
+                * {
+                    width: 100%;
+                    max-width: 143px;
+                    min-width: 115px;
+
+                    &:not(:last-child) {
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+
+    .image-file {
+        max-width: 200px;
+        height: 44px;
+
+        .tui-file-error {
+            padding: 2px;
+
+            ::ng-deep .t-content.ng-star-inserted {
+                line-height: 14px;
+            }
+        }
+
+        tui-input-files ::ng-deep *, tui-file ::ng-deep * {
+            max-height: 44px;
+            min-height: 10px;
+        }
+
+        tui-input-files ::ng-deep label .t-description .ng-star-inserted {
+            a {
+                &:before {
+                    content: 'Choose logo';
+                }
+
+                span {
+                    display: none;
+                }
+            }
+
+            & > span {
+                display: none;
+            }
+        }
+    }
+}

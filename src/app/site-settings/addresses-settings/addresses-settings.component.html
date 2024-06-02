@@ -21,30 +21,58 @@
             >
                 <tui-svg src="tuiIconClose"></tui-svg>
             </button>
-            <tui-input
-                    tuiTextfieldSize="m"
-                    [tuiTextfieldCleaner]="true"
-                    formControlName="sportType"
-                    class="sport-type"
-            >
-                Вид спорта
-                <input
-                        tuiTextfield
-                        type="text"
-                />
-            </tui-input>
-            <tui-input
-                    tuiTextfieldSize="m"
-                    [tuiTextfieldCleaner]="true"
-                    formControlName="address"
-                    class="address"
-            >
-                Адрес
-                <input
-                        tuiTextfield
-                        type="text"
-                />
-            </tui-input>
+            <div class="row">
+                <tui-input
+                        tuiTextfieldSize="m"
+                        [tuiTextfieldCleaner]="true"
+                        formControlName="description"
+                        class="description"
+                >
+                    Описание зала
+                    <input
+                            tuiTextfield
+                            type="text"
+                    />
+                </tui-input>
+                <tui-input
+                        tuiTextfieldSize="m"
+                        [tuiTextfieldCleaner]="true"
+                        formControlName="address"
+                        class="address"
+                >
+                    Адрес
+                    <input
+                            tuiTextfield
+                            type="text"
+                    />
+                </tui-input>
+            </div>
+            <div class="row">
+                <tui-input
+                        tuiTextfieldSize="m"
+                        [tuiTextfieldCleaner]="true"
+                        formControlName="alt"
+                        class="coords alt"
+                >
+                    Высота
+                    <input
+                            tuiTextfield
+                            type="text"
+                    />
+                </tui-input>
+                <tui-input
+                        tuiTextfieldSize="m"
+                        [tuiTextfieldCleaner]="true"
+                        formControlName="lat"
+                        class="coords"
+                >
+                    Ширина
+                    <input
+                            tuiTextfield
+                            type="text"
+                    />
+                </tui-input>
+            </div>
         </div>
 
         <button

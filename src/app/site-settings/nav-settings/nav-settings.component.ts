@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsBaseComponent } from '../settings.base.component';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { finalize, map, Observable, of, Subject, switchMap, tap, timer } from 'rxjs';
+import { FormGroup, Validators } from '@angular/forms';
+import { Observable, of, Subject, switchMap, tap } from 'rxjs';
 import { TuiFileLike } from '@taiga-ui/kit';
-import { getAsFormGroup } from '../../utils/utils';
+import { getAsFormControl } from "../../utils/utils";
 
 @Component({
     selector: 'app-nav-settings',
@@ -11,21 +11,17 @@ import { getAsFormGroup } from '../../utils/utils';
     styleUrls: ['./nav-settings.scss']
 })
 export class NavSettingsComponent extends SettingsBaseComponent implements OnInit {
-    public readonly getAsFormGroup = getAsFormGroup;
+    public getAsFormControl = getAsFormControl;
 
-    // копипаста из документации тайги
-    public imageControl!: FormControl;
     public rejectedFiles$ = new Subject<TuiFileLike | null>();
-    public loadingFiles$ = new Subject<TuiFileLike | null>();
     public loadedFiles$!: Observable<any>;
 
     override ngOnInit() {
         super.ngOnInit();
 
-        this.imageControl = this.form.controls['logoImg'] as FormControl;
-        this.loadedFiles$ = this.imageControl.valueChanges.pipe(
-            tap((v) => console.log(v)),
-            switchMap(file => (file ? this.makeRequest(file) : of(null))),
+        this.loadedFiles$ = getAsFormControl(this.form.get('logoImg')).valueChanges.pipe(
+            switchMap(file => (file ? of(file) : of(null))),
+            tap(() => console.log(this.form))
         );
     }
 
@@ -42,37 +38,19 @@ export class NavSettingsComponent extends SettingsBaseComponent implements OnIni
     }
 
     protected saveSiteSettings(value: any) {
-        this.site.news = this.form.value;
+        this.site.navigation = this.form.value;
     }
 
-    // копипаст из тайнги
     onReject(file: TuiFileLike | readonly TuiFileLike[]): void {
         this.rejectedFiles$.next(file as TuiFileLike);
     }
 
     removeFile(): void {
-        this.imageControl.setValue(null);
+        getAsFormControl(this.form.get('logoImg')).setValue(null);
     }
 
     clearRejected(): void {
         this.removeFile();
         this.rejectedFiles$.next(null);
-    }
-
-    makeRequest(file: TuiFileLike): Observable<TuiFileLike | null> {
-        this.loadingFiles$.next(file);
-
-        return timer(1000).pipe(
-            map(() => {
-                if (Math.random() > 0.5) {
-                    return file;
-                }
-
-                this.rejectedFiles$.next(file);
-
-                return null;
-            }),
-            finalize(() => this.loadingFiles$.next(null)),
-        );
     }
 }

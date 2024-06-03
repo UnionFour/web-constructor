@@ -12,6 +12,8 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SiteSettingsModule } from './site-settings/site-settings.module';
 import { TuiActiveZoneModule, TuiObscuredModule } from "@taiga-ui/cdk";
+import { HttpClientModule } from "@angular/common/http";
+import { BuilderService } from "./services/builder.service";
 
 @Component({
     selector: 'app-root',
@@ -28,12 +30,14 @@ import { TuiActiveZoneModule, TuiObscuredModule } from "@taiga-ui/cdk";
         TuiObscuredModule,
         TuiActiveZoneModule,
         TuiDropdownModule,
-        TuiButtonModule
+        TuiButtonModule,
+        HttpClientModule
     ],
     providers: [
         {
             provide: TUI_SANITIZER, useClass: NgDompurifySanitizer
-        }
+        },
+        BuilderService
     ]
 })
 export class AppComponent {

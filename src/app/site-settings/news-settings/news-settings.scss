@@ -15,6 +15,10 @@
 
     .image-input {
         height: 168px;
+
+        > * {
+            height: 168px;
+        }
     }
 
     tui-editor {
@@ -30,6 +34,10 @@
 
         .image-input {
             height: 100px;
+
+            > * {
+                height: 100px;
+            }
         }
 
         tui-editor {

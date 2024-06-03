@@ -1,7 +1,7 @@
 <ng-container [formGroup]="form">
     <div class="image-file">
         <tui-input-files
-                *ngIf="!imageControl.value"
+                *ngIf="!getAsFormControl(form.get('img')).value"
                 accept="image/*"
                 formControlName="img"
                 (reject)="onReject($event)"
@@ -11,7 +11,7 @@
             <tui-file
                     *ngIf="loadedFiles$ | async as file"
                     [file]="file"
-                    [showDelete]="imageControl.enabled"
+                    [showDelete]="getAsFormControl(form.get('img')).enabled"
                     (removed)="removeFile()"
             ></tui-file>
 
@@ -19,15 +19,8 @@
                     *ngIf="rejectedFiles$ | async as file"
                     state="error"
                     [file]="file"
-                    [showDelete]="imageControl.enabled"
+                    [showDelete]="getAsFormControl(form.get('img')).enabled"
                     (removed)="clearRejected()"
-            ></tui-file>
-
-            <tui-file
-                    *ngIf="loadingFiles$ | async as file"
-                    state="loading"
-                    [file]="file"
-                    [showDelete]="imageControl.enabled"
             ></tui-file>
         </tui-files>
     </div>

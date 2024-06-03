@@ -1,4 +1,4 @@
-import { ThemeVariables } from '../interfaces/site.interface';
+import { ThemeVariables } from '../interfaces/site-with-images-interface';
 
 export interface Theme {
     name: string;

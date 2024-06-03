@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { SettingsBaseComponent } from '../settings.base.component';
 import { DefaultThemes, Theme } from '../../fixtures/themes.fixture';
 import { defaultEditorColors } from '@tinkoff/tui-editor';
 import { FormGroup, Validators } from "@angular/forms";
-import { ThemeVariables } from "../../interfaces/site.interface";
+import { ThemeVariables } from "../../interfaces/site-with-images-interface";
 
 @Component({
     selector: 'app-theme-settings',
@@ -11,6 +11,8 @@ import { ThemeVariables } from "../../interfaces/site.interface";
     styleUrls: ['./theme-settings.scss']
 })
 export class ThemeSettingsComponent extends SettingsBaseComponent {
+    @Output() public building$: EventEmitter<void> = new EventEmitter<void>();
+
     public themes: Theme[] = DefaultThemes;
     public curTheme: Theme = DefaultThemes[0];
 
@@ -52,5 +54,9 @@ export class ThemeSettingsComponent extends SettingsBaseComponent {
     public changeTheme(e: Theme) {
         this.isThemeChanged = true;
         this.form.patchValue(e.themeVariables);
+    }
+
+    public build() {
+        this.building$.emit();
     }
 }

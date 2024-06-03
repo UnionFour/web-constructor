@@ -1,4 +1,4 @@
-export interface SiteInterface {
+export interface SiteWithImagesInterface {
     navigation: NavigationItems;
     themeVariables: ThemeVariables;
     main: TextWithImage;
@@ -9,7 +9,7 @@ export interface SiteInterface {
 }
 
 export interface NavigationItems {
-    logoImg: string;
+    logoImg?: File;
     companyName: string;
     description: string;
     news: string;
@@ -25,7 +25,7 @@ export interface ThemeVariables {
 }
 
 export interface TextWithImage {
-    img: string;
+    img?: File;
     title: string;
     text: string;
 }
@@ -52,7 +52,7 @@ export interface AddressesSettings {
 // instructors
 
 export interface Instructor {
-    img: string;
+    img?: File;
     name: string;
     sportType: string;
     info: string;

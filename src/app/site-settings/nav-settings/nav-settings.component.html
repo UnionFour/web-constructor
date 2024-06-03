@@ -2,7 +2,7 @@
     <tui-scrollbar>
         <div class="image-file">
             <tui-input-files
-                    *ngIf="!imageControl.value"
+                    *ngIf="!getAsFormControl(form.get('logoImg')).value"
                     accept="image/*"
                     formControlName="logoImg"
                     (reject)="onReject($event)"
@@ -12,7 +12,7 @@
                 <tui-file
                         *ngIf="loadedFiles$ | async as file"
                         [file]="file"
-                        [showDelete]="imageControl.enabled"
+                        [showDelete]="getAsFormControl(form.get('logoImg')).enabled"
                         (removed)="removeFile()"
                 ></tui-file>
 
@@ -21,15 +21,8 @@
                         *ngIf="rejectedFiles$ | async as file"
                         state="error"
                         [file]="file"
-                        [showDelete]="imageControl.enabled"
+                        [showDelete]="getAsFormControl(form.get('logoImg')).enabled"
                         (removed)="clearRejected()"
-                ></tui-file>
-
-                <tui-file
-                        *ngIf="loadingFiles$ | async as file"
-                        state="loading"
-                        [file]="file"
-                        [showDelete]="imageControl.enabled"
                 ></tui-file>
             </tui-files>
         </div>

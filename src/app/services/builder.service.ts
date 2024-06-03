@@ -1,16 +1,14 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 
-@Injectable({
-    providedIn: 'root',
-})
+@Injectable()
 export class BuilderService {
     constructor(private http: HttpClient) {
     }
 
     public build(organisation: string,
                   config: object,
-                  ...files: File[]): void {
+                  files: File[]): void {
 
         let config_blob = new Blob([JSON.stringify(config, null, 2)], {
             type: "application/json",
@@ -24,6 +22,6 @@ export class BuilderService {
             formData.append(file.name, file, file.name);
         }
 
-        this.http.post('http://178.154.224.222/build', formData);
+        this.http.post('http://178.154.224.222/build', formData).subscribe((v) => console.log(v));
     }
 }

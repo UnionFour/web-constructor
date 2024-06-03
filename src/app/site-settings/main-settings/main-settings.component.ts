@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TuiFileLike } from '@taiga-ui/kit';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { finalize, map, Observable, of, Subject, switchMap, timer } from 'rxjs';
+import { FormGroup, Validators } from '@angular/forms';
+import { Observable, of, Subject, switchMap, tap } from 'rxjs';
 import { defaultEditorTools, TuiEditorTool } from '@tinkoff/tui-editor';
 import { SettingsBaseComponent } from "../settings.base.component";
+import { getAsFormControl } from "../../utils/utils";
 
 @Component({
     selector: 'app-main-settings',
@@ -11,22 +12,21 @@ import { SettingsBaseComponent } from "../settings.base.component";
     styleUrls: ['./main-settings.scss']
 })
 export class MainSettingsComponent extends SettingsBaseComponent implements OnInit {
+    public getAsFormControl = getAsFormControl;
+
     // копипаста из документации тайги
     readonly tools: TuiEditorTool[] = defaultEditorTools;
-    public imageControl!: FormControl;
 
     public rejectedFiles$ = new Subject<TuiFileLike | null>();
-    public loadingFiles$ = new Subject<TuiFileLike | null>();
     public loadedFiles$!: Observable<any>;
 
     override ngOnInit() {
         super.ngOnInit();
 
-        this.imageControl = this.form.controls['img'] as FormControl;
-        // this.loadedFiles$ = this.imageControl.valueChanges.pipe(
-        //     switchMap(file => (file ? this.makeRequest(file) : of(null))),
-        // );
-        this.imageControl.valueChanges.subscribe((v) => console.log(this.imageControl));
+        this.loadedFiles$ = getAsFormControl(this.form.get('img')).valueChanges.pipe(
+            switchMap(file => (file ? of(file) : of(null))),
+            tap(() => console.log(this.form))
+        );
     }
 
     protected createForm(): FormGroup {
@@ -46,28 +46,11 @@ export class MainSettingsComponent extends SettingsBaseComponent implements OnIn
     }
 
     removeFile(): void {
-        this.imageControl.setValue(null);
+        getAsFormControl(this.form.get('img')).setValue(null);
     }
 
     clearRejected(): void {
         this.removeFile();
         this.rejectedFiles$.next(null);
-    }
-
-    makeRequest(file: TuiFileLike): Observable<TuiFileLike | null> {
-        this.loadingFiles$.next(file);
-
-        return timer(1000).pipe(
-            map(() => {
-                if (Math.random() > 0.5) {
-                    return file;
-                }
-
-                this.rejectedFiles$.next(file);
-
-                return null;
-            }),
-            finalize(() => this.loadingFiles$.next(null)),
-        );
     }
 }

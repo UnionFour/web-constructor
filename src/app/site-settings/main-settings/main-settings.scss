@@ -2,6 +2,10 @@
     .image-file {
         margin-bottom: 72px;
         height: 336px;
+
+        > * {
+            height: 336px;
+        }
     }
 }
 
@@ -9,6 +13,10 @@
     :host {
         .image-file {
             height: 150px;
+
+            > * {
+                height: 150px;
+            }
         }
 
         tui-editor {

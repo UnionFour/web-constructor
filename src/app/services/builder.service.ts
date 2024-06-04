@@ -5,7 +5,6 @@ import {HttpClient} from "@angular/common/http";
 export class BuilderService {
     constructor(private http: HttpClient) {
     }
-
     public build(organisation: string,
                   config: object,
                   files: File[]): void {
@@ -22,6 +21,6 @@ export class BuilderService {
             formData.append(file.name, file, file.name);
         }
 
-        this.http.post('http://178.154.224.222/build', formData).subscribe((v) => console.log(v));
+        this.http.post('http://158.160.106.229/build', formData).subscribe((v) => console.log(v));
     }
 }

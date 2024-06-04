@@ -21,6 +21,6 @@ export class BuilderService {
             formData.append(file.name, file, file.name);
         }
 
-        this.http.post('http://158.160.106.229/build', formData).subscribe((v) => console.log(v));
+        this.http.post('http://51.250.64.227/build', formData).subscribe((v) => console.log(v));
     }
 }

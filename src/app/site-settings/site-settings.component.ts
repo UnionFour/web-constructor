@@ -39,17 +39,17 @@ export class SiteSettingsComponent {
         console.log(images);
     }
 
-    private separationTextAndImages(object: any, images: File[], parentKey?: string) { // доработать нейминги внутри масивов
+    private separationTextAndImages(object: any, images: File[], parentKey?: string, grandparent?: string) { // доработать нейминги внутри масивов
         for (const [settingKey, setting] of Object.entries(object)) {
             if (setting instanceof File) {
                 const nameParts = setting.name.split('.');
-                this.renameFile(setting, `${parentKey}.${nameParts[nameParts.length - 1]}`);
+                this.renameFile(setting, `${grandparent || ''}${parentKey}.${nameParts[nameParts.length - 1]}`);
                 images.push(setting);
                 delete object[settingKey];
             } else if (setting instanceof Array) {
-                this.separationTextAndImages(setting, images, (settingKey + parentKey));
+                this.separationTextAndImages(setting, images, settingKey, parentKey);
             } else if (setting instanceof Object) {
-                this.separationTextAndImages(setting, images, settingKey);
+                this.separationTextAndImages(setting, images, settingKey, parentKey);
             }
         }
     }

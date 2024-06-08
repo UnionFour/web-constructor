@@ -30,7 +30,6 @@ export abstract class SettingsBaseComponent extends DestroyableComponent impleme
         ).subscribe(
             (value) => {
                 this.saveSiteSettings(value);
-                console.log(this.site);
             },
             (e) => console.log(e)
         );

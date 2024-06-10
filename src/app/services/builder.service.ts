@@ -1,13 +1,14 @@
-import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class BuilderService {
     constructor(private http: HttpClient) {
     }
+
     public build(organisation: string,
-                  config: object,
-                  files: File[]): void {
+                 config: object,
+                 files: File[]): void {
 
         let config_blob = new Blob([JSON.stringify(config, null, 2)], {
             type: "application/json",

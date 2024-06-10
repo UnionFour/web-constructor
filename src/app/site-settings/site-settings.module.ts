@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 import { TuiDataListWrapperModule, TuiInputFilesModule, TuiInputModule, TuiSelectModule } from '@taiga-ui/kit';
 import {
     TUI_SANITIZER,
-    TuiButtonModule,
+    TuiButtonModule, TuiDropdownModule,
     TuiScrollbarModule,
     TuiSvgModule,
     TuiTextfieldControllerModule
@@ -23,7 +23,7 @@ import { NewsSettingsComponent } from './news-settings/news-settings.component';
 import { ServicesSettingsComponent } from './services-settings/services-settings.component';
 import { AddressesSettingsComponent } from './addresses-settings/addresses-settings.component';
 import { InstructorsSettingsComponent } from './instructors-settings/instructors-settings.component';
-import { TuiValueChangesModule } from "@taiga-ui/cdk";
+import { TuiActiveZoneModule, TuiObscuredModule, TuiValueChangesModule } from "@taiga-ui/cdk";
 import { NavSettingsComponent } from "./nav-settings/nav-settings.component";
 
 @NgModule({
@@ -41,7 +41,10 @@ import { NavSettingsComponent } from "./nav-settings/nav-settings.component";
         ReactiveFormsModule,
         TuiValueChangesModule,
         TuiSvgModule,
-        TuiScrollbarModule
+        TuiScrollbarModule,
+        TuiDropdownModule,
+        TuiActiveZoneModule,
+        TuiObscuredModule
     ],
     declarations: [
         SiteSettingsComponent,

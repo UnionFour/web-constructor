@@ -21,7 +21,6 @@ export class NavSettingsComponent extends SettingsBaseComponent implements OnIni
 
         this.loadedFiles$ = getAsFormControl(this.form.get('logoImg')).valueChanges.pipe(
             switchMap(file => (file ? of(file) : of(null))),
-            tap(() => console.log(this.form))
         );
     }
 

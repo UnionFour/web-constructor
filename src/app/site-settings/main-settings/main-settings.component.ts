@@ -25,7 +25,6 @@ export class MainSettingsComponent extends SettingsBaseComponent implements OnIn
 
         this.loadedFiles$ = getAsFormControl(this.form.get('img')).valueChanges.pipe(
             switchMap(file => (file ? of(file) : of(null))),
-            tap(() => console.log(this.form))
         );
     }
 

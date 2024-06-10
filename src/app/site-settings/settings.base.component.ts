@@ -21,11 +21,9 @@ export abstract class SettingsBaseComponent extends DestroyableComponent impleme
 
         this.form.valueChanges.pipe(
             takeUntil(this.destroy$),
-            tap((v) => console.log(v)),
             distinctUntilChanged((prev, curr) => {
                 return JSON.stringify(prev) == JSON.stringify(curr);
             }),
-            tap((v) => console.log(v)),
             debounceTime(500)
         ).subscribe(
             (value) => {

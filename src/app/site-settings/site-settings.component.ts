@@ -9,6 +9,8 @@ import { BuilderService } from "../services/builder.service";
     styleUrls: ['./settings.scss']
 })
 export class SiteSettingsComponent {
+    public open = false;
+
     // тут дефолтный объект, для использования в случае создания с нуля
     //  необходимо подхватывать сохраненные изменения
     private readonly defaultSite: SiteWithImagesInterface = {
@@ -26,17 +28,27 @@ export class SiteSettingsComponent {
     constructor(private builder: BuilderService) {
     }
 
-    public onBuild() {
-        console.log(this.site);
+    public onClick(): void {
+        this.open = !this.open;
+    }
 
+    public onObscured(obscured: boolean): void {
+        if (obscured) {
+            this.open = false;
+        }
+    }
+
+    public onActiveZone(active: boolean): void {
+        this.open = active && this.open;
+    }
+
+    public onBuild() {
         // не очень красиво разделяем изображения и текстовые настройки
         const images: File[] = [];
         const siteSettings: any = structuredClone(this.site);
         this.separationTextAndImages(siteSettings, images);
 
         this.builder.build('test', siteSettings, images);
-        console.log(siteSettings);
-        console.log(images);
     }
 
     private separationTextAndImages(object: any, images: File[], parentKey?: string, grandparent?: string) { // доработать нейминги внутри масивов

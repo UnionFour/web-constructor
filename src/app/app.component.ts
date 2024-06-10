@@ -14,6 +14,7 @@ import { SiteSettingsModule } from './site-settings/site-settings.module';
 import { TuiActiveZoneModule, TuiObscuredModule } from "@taiga-ui/cdk";
 import { HttpClientModule } from "@angular/common/http";
 import { BuilderService } from "./services/builder.service";
+import { AuthComponent } from "./auth/auth.component";
 
 @Component({
     selector: 'app-root',
@@ -31,7 +32,8 @@ import { BuilderService } from "./services/builder.service";
         TuiActiveZoneModule,
         TuiDropdownModule,
         TuiButtonModule,
-        HttpClientModule
+        HttpClientModule,
+        AuthComponent
     ],
     providers: [
         {
@@ -41,19 +43,4 @@ import { BuilderService } from "./services/builder.service";
     ]
 })
 export class AppComponent {
-    public open = false;
-
-    public onClick(): void {
-        this.open = !this.open;
-    }
-
-    public onObscured(obscured: boolean): void {
-        if (obscured) {
-            this.open = false;
-        }
-    }
-
-    public onActiveZone(active: boolean): void {
-        this.open = active && this.open;
-    }
 }

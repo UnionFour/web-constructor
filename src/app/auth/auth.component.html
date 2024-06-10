@@ -1,0 +1,127 @@
+<div class="auth-window">
+    <ng-container *ngIf="isAuth; else registration">
+        <form [formGroup]="signInForm">
+            <h1>Авторизация</h1>
+            <tui-input
+                    formControlName="email"
+                    tuiTextfieldSize="m"
+                    [tuiTextfieldCleaner]="true"
+                    [tuiTextfieldLabelOutside]="true"
+            >
+                Электронная почта
+                <input
+                        autocomplete="email"
+                        tuiTextfield
+                        type="email"
+                        name="email"
+                />
+            </tui-input>
+            <tui-input
+                    formControlName="password"
+                    tuiTextfieldSize="m"
+                    [tuiTextfieldCleaner]="true"
+                    [tuiTextfieldLabelOutside]="true"
+            >
+                Пароль
+                <input
+                        autocomplete="password"
+                        tuiTextfield
+                        type="password"
+                        name="password"
+                />
+            </tui-input>
+
+            <button
+                    (click)="signIn()"
+                    appearance="primary"
+                    tuiButton
+                    type="button"
+                    class="tui-space_right-3 tui-space_bottom-3"
+                    size="m"
+            >
+                Войти в аккаунт
+            </button>
+        </form>
+
+        <button
+                (click)="toggle()"
+                appearance="secondary"
+                tuiButton
+                type="button"
+                size="s"
+                class="tui-space_right-3 tui-space_bottom-3"
+        >
+            Зарегистрироваться
+        </button>
+    </ng-container>
+</div>
+
+<ng-template #registration>
+    <form [formGroup]="signUpForm">
+        <h1>Регистрация</h1>
+        <tui-input
+                formControlName="companyName"
+                tuiTextfieldSize="m"
+                [tuiTextfieldCleaner]="true"
+                [tuiTextfieldLabelOutside]="true"
+        >
+            Название организации
+            <input
+                    autocomplete="companyName"
+                    tuiTextfield
+                    type="text"
+                    name="companyName"
+            />
+        </tui-input>
+        <tui-input
+                formControlName="email"
+                tuiTextfieldSize="m"
+                [tuiTextfieldCleaner]="true"
+                [tuiTextfieldLabelOutside]="true"
+        >
+            Электронная почта
+            <input
+                    autocomplete="email"
+                    tuiTextfield
+                    type="email"
+                    name="email"
+            />
+        </tui-input>
+        <tui-input
+                formControlName="password"
+                tuiTextfieldSize="m"
+                [tuiTextfieldCleaner]="true"
+                [tuiTextfieldLabelOutside]="true"
+        >
+            Пароль
+            <input
+                    autocomplete="password"
+                    tuiTextfield
+                    type="password"
+                    name="password"
+            />
+        </tui-input>
+
+        <button
+                (click)="signUp()"
+                appearance="primary"
+                tuiButton
+                type="button"
+                size="m"
+                class="tui-space_right-3 tui-space_bottom-3"
+        >
+            Зарегестрироваться
+        </button>
+    </form>
+
+    <button
+            (click)="toggle()"
+            appearance="secondary"
+            tuiButton
+            type="button"
+            size="s"
+            class="tui-space_right-3 tui-space_bottom-3"
+    >
+        Войти в аккаут
+    </button>
+</ng-template>

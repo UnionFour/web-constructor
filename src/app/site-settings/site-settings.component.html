@@ -1,3 +1,22 @@
+<nav>
+    <div>
+        <!--            Место для навигации-->
+    </div>
+    <div class="profile">
+        <!--            <tui-svg src="tuiIconUserLarge"></tui-svg>-->
+        <button
+                type="button"
+                [tuiDropdown]="dropdownContent"
+                [tuiDropdownManual]="open"
+                (click)="onClick()"
+                (tuiActiveZoneChange)="onActiveZone($event)"
+                (tuiObscured)="onObscured($event)"
+        >
+            <tui-svg src="tuiIconUserLarge"></tui-svg>
+            <tui-svg src="tuiIconChevronDown"></tui-svg>
+        </button>
+    </div>
+</nav>
 <app-theme-settings [site]="site" (building$)="onBuild()"></app-theme-settings>
 <div class="settings-body">
     <app-nav-settings [site]="site"></app-nav-settings>
@@ -7,3 +26,11 @@
     <app-instructors-settings [site]="site"></app-instructors-settings>
     <app-services-settings [site]="site"></app-services-settings>
 </div>
+
+<ng-template #dropdownContent>
+    <div class="dropdown">
+        <button>
+            Выйти
+        </button>
+    </div>
+</ng-template>

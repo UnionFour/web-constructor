@@ -14,7 +14,7 @@ class OutputAuthorization {
 @Injectable({providedIn: 'root'})
 export class AuthService {
     public isLoggedIn: boolean = false;
-    private url: string = "http://localhost:5282/auth";
+    private url: string = "http://51.250.64.227/auth";
 
     constructor(
         private router: Router,

@@ -33,13 +33,13 @@ import { AuthComponent } from "./auth/auth.component";
         TuiDropdownModule,
         TuiButtonModule,
         HttpClientModule,
-        AuthComponent
+        AuthComponent,
     ],
     providers: [
         {
             provide: TUI_SANITIZER, useClass: NgDompurifySanitizer
         },
-        BuilderService
+        BuilderService,
     ]
 })
 export class AppComponent {

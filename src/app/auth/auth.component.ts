@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angula
 import { TuiInputModule } from "@taiga-ui/kit";
 import { TuiButtonModule, TuiTextfieldControllerModule } from "@taiga-ui/core";
 import { AuthService } from "../services/auth.service";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-auth',
@@ -19,9 +20,6 @@ import { AuthService } from "../services/auth.service";
         TuiTextfieldControllerModule,
         TuiButtonModule,
         NgIf
-    ],
-    providers: [
-        AuthService
     ]
 })
 export class AuthComponent implements OnInit {
@@ -33,7 +31,8 @@ export class AuthComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder,
-        private authService: AuthService
+        private authService: AuthService,
+        private router: Router
     ) {
         this.initForms();
     }
@@ -51,7 +50,9 @@ export class AuthComponent implements OnInit {
         this.authService.signIn().subscribe(
             (v) => {
                 this.loading = false;
-                console.log(v);
+                if (v) {
+                    this.onSuccess();
+                }
             },
             (e) => {
                 this.loading = false;
@@ -70,7 +71,9 @@ export class AuthComponent implements OnInit {
         this.authService.signUp().subscribe(
             (v) => {
                 this.loading = false;
-                console.log(v);
+                if (v) {
+                    this.onSuccess();
+                }
             },
             (e) => {
                 this.loading = false;
@@ -83,6 +86,12 @@ export class AuthComponent implements OnInit {
         this.signInForm.reset();
         this.signUpForm.reset();
         this.isAuth = !this.isAuth;
+    }
+
+    private onSuccess() {
+        localStorage.setItem('isAuth', 'true');
+        this.authService.checkLoggedIn();
+        this.router.navigate(['']);
     }
 
     private initForms() {

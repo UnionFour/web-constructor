@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { SiteWithImagesInterface } from "../interfaces/site-with-images-interface";
 import { DefaultThemes } from "../fixtures/themes.fixture";
 import { BuilderService } from "../services/builder.service";
+import { Router } from "@angular/router";
+import { AuthService } from "../services/auth.service";
 
 @Component({
     selector: 'app-site-settings',
@@ -25,7 +27,10 @@ export class SiteSettingsComponent {
 
     public site: SiteWithImagesInterface = this.defaultSite;
 
-    constructor(private builder: BuilderService) {
+    constructor(
+        private builder: BuilderService,
+        private authService: AuthService
+    ) {
     }
 
     public onClick(): void {
@@ -40,6 +45,10 @@ export class SiteSettingsComponent {
 
     public onActiveZone(active: boolean): void {
         this.open = active && this.open;
+    }
+
+    public onLogOut() {
+        this.authService.logOut();
     }
 
     public onBuild() {

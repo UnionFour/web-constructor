@@ -21,7 +21,7 @@ export class SiteSettingsComponent {
         navigation: { logoImg: undefined, companyName: 'Школа спорта', description: 'О нас', news: 'Наши новости', addresses: 'Спортивные залы', instructors: 'Преподаватели', services: 'Услуги' },
         themeVariables: DefaultThemes[0].themeVariables,
         main: { img: undefined, title: 'О нас', text: '' },
-        news: { title: 'Наши новости', news: [{ img: undefined, title: '', text: '', address: '', date: '', price: 0, maxPlaceCount: 10, busyPlaceCount: 0, phone: '' }] },
+        news: { title: 'Наши новости', news: [{ img: undefined, title: '', bigText: '', littleText: '', address: '', date: '', price: 0, maxPlaceCount: 10, busyPlaceCount: 0, phone: '' }] },
         addresses: { title: 'Спортивные залы', addresses: [{description: 'Баскетбол', address: 'ул. Пушкина д. 60', lat: 55.9999, alt: 37.23234}] },
         instructors: { title: 'Преподаватели', instructors: [{ img: undefined, name: 'Василий Аккордон Васильевич', sportType: 'Баскетбол', info: 'Лучший преподаватель в мире' }] },
         services: { title: 'Услуги', services: [{sportType: '', text: '', address: '', buttonWording: 'Записаться'}] }
@@ -59,6 +59,7 @@ export class SiteSettingsComponent {
         const siteSettings: any = structuredClone(this.site);
         this.separationTextAndImages(siteSettings, images);
         const companyName = localStorage.getItem('login') || 'test';
+        console.log(siteSettings);
 
         this.loading = true;
         this.openInfo = true;

@@ -35,7 +35,11 @@ export interface NewsSettings {
     news: NewInterface[];
 }
 
-export interface NewInterface extends TextWithImage {
+export interface NewInterface {
+    img?: File;
+    title: string;
+    bigText: string;
+    littleText: string;
     date: string;
     address: string;
     price: number;

@@ -33,7 +33,8 @@ export class NewsSettingsComponent extends SettingsBaseComponent {
             const newsForm = this.fb.group({
                 img: [news.img],
                 title: [news.title],
-                text: [news.text],
+                bigText: [news.bigText],
+                littleText: [news.littleText],
                 date: [news.date || '24.06.2024, 12:30'],
                 address: [news.address],
                 price: [news.price],
@@ -54,7 +55,8 @@ export class NewsSettingsComponent extends SettingsBaseComponent {
     public createNews() {
         this.newsFormArray.push(this.fb.group({
             img: [''],
-            title: [''],
+            bigText: [''],
+            littleText: [''],
             text: [''],
             date: ['24.06.2024, 12:30'],
             address: [''],

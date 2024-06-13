@@ -1,14 +1,14 @@
-import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 import { Observable, of, tap } from "rxjs";
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 class OutputAuthorization {
-  public id: string = "";
-  public login: string = "";
-  public token: string = "";
-  public isCouch: boolean = false;
-  public isOrganizator: boolean = false;
+    public id: string = "";
+    public companyName: string = "";
+    public token: string = "";
+    public isCouch: boolean = false;
+    public isOrganizator: boolean = false;
 }
 
 @Injectable({providedIn: 'root'})
@@ -27,7 +27,7 @@ export class AuthService {
         this.isLoggedIn = Boolean(localStorage.getItem('isAuth'));
     }
 
-    public signIn(value: {email: string; password: string}): Observable<any> {
+    public signIn(value: { email: string; password: string }): Observable<any> {
         return this.http.post<OutputAuthorization>(this.url + "/authorization", {
             email: value.email,
             password: value.password,
@@ -42,9 +42,9 @@ export class AuthService {
         );
     }
 
-    public signUp(value: {email: string; password: string, login: string}): Observable<any> {
+    public signUp(value: { email: string; password: string, login: string }): Observable<any> {
         return this.http.post<OutputAuthorization>(this.url + "/registration", {
-            login: value.login,
+            companyName: value.login,
             email: value.email,
             password: value.password,
             isOrganizator: true,

@@ -42,9 +42,9 @@ export class AuthService {
         );
     }
 
-    public signUp(value: { email: string; password: string, login: string }): Observable<any> {
+    public signUp(value: { email: string; password: string, organizationName: string }): Observable<any> {
         return this.http.post<OutputAuthorization>(this.url + "/registration", {
-            organizationName: value.login,
+            organizationName: value.organizationName,
             email: value.email,
             password: value.password,
             isOrganizator: true,
@@ -53,7 +53,7 @@ export class AuthService {
             tap(() => {
                 localStorage.setItem('isAuth', 'true');
                 localStorage.setItem('email', value.email);
-                localStorage.setItem('login', value.login);
+                localStorage.setItem('login', value.organizationName);
                 this.checkLoggedIn();
             })
         );

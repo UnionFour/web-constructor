@@ -108,7 +108,7 @@ export class AuthComponent implements OnInit {
         });
 
         this.signUpForm = this.fb.group({
-            companyName: ['', {validators: [
+            organizationName: ['', {validators: [
                     Validators.required,
                     Validators.minLength(3),
                     Validators.maxLength(30),

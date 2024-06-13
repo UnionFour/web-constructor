@@ -11,6 +11,8 @@ import { AuthService } from "../services/auth.service";
 })
 export class SiteSettingsComponent {
     public open = false;
+    public loading = false;
+    public openInfo = false;
 
     // тут дефолтный объект, для использования в случае создания с нуля
     //  необходимо подхватывать сохраненные изменения
@@ -28,7 +30,7 @@ export class SiteSettingsComponent {
 
     constructor(
         private builder: BuilderService,
-        private authService: AuthService
+        private authService: AuthService,
     ) {
     }
 
@@ -55,8 +57,20 @@ export class SiteSettingsComponent {
         const images: File[] = [];
         const siteSettings: any = structuredClone(this.site);
         this.separationTextAndImages(siteSettings, images);
+        const companyName = localStorage.getItem('login') || 'test';
 
-        this.builder.build('test', siteSettings, images);
+        this.loading = true;
+        this.openInfo = true;
+        this.builder.build(companyName, siteSettings, images).subscribe(
+            () => {
+                this.loading = false;
+            },
+            () => {
+                // this.loading = false;
+
+                // for test
+            }
+        );
     }
 
     private separationTextAndImages(object: any, images: File[], parentKey?: string, grandparent?: string) { // доработать нейминги внутри масивов

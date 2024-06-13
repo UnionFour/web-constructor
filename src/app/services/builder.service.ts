@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable, tap } from "rxjs";
 
 @Injectable()
 export class BuilderService {
@@ -8,7 +9,7 @@ export class BuilderService {
 
     public build(organisation: string,
                  config: object,
-                 files: File[]): void {
+                 files: File[]): Observable<any> {
 
         let config_blob = new Blob([JSON.stringify(config, null, 2)], {
             type: "application/json",
@@ -22,6 +23,16 @@ export class BuilderService {
             formData.append(file.name, file, file.name);
         }
 
-        this.http.post('http://51.250.64.227/build', formData).subscribe((v) => console.log(v));
+        return this.http.post(
+            'http://51.250.64.227/build',
+            formData,
+            {
+                headers: new HttpHeaders({ timeout: `${600000}` })
+            }
+        ).pipe(
+            tap(() => {
+                window.open(`http://51.250.64.227/${organisation}`, "_blank");
+            })
+        );
     }
 }

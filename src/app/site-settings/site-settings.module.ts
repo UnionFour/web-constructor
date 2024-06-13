@@ -12,7 +12,7 @@ import {
 } from '@taiga-ui/kit';
 import {
     TUI_SANITIZER,
-    TuiButtonModule, TuiDropdownModule,
+    TuiButtonModule, TuiDropdownModule, TuiLoaderModule,
     TuiScrollbarModule,
     TuiSvgModule,
     TuiTextfieldControllerModule, TuiTooltipModule
@@ -58,7 +58,8 @@ import { DateTransformerService } from "../services/date-transformer.service";
         TuiInputDateTimeModule,
         TuiTooltipModule,
         TuiInputNumberModule,
-        TuiInputPhoneModule
+        TuiInputPhoneModule,
+        TuiLoaderModule
     ],
     declarations: [
         SiteSettingsComponent,

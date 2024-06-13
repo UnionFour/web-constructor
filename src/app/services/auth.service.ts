@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import {Observable, of} from "rxjs";
+import { Observable, of, tap } from "rxjs";
 import {Router} from "@angular/router";
 
 class OutputAuthorization {
@@ -27,31 +27,44 @@ export class AuthService {
         this.isLoggedIn = Boolean(localStorage.getItem('isAuth'));
     }
 
-    public signIn(): Observable<any> {
+    public signIn(value: {email: string; password: string}): Observable<any> {
+        // return this.http.post<OutputAuthorization>(this.url + "/authorization", {
+        //     email: value.email,
+        //     password: value.password,
+        //     isOrganizator: true,
+        //     isCouch: false
+        // });
 
-        this.http.post<OutputAuthorization>(this.url + "/authorization", {
-            email: "dub@db.ru",
-            password: "string",
-            isOrganizator: true,
-            isCouch: true
-        }).subscribe(value => console.log(value));
-
-        return of(true);
+        return of(true).pipe(
+            tap((v) => {
+                localStorage.setItem('isAuth', 'true');
+                localStorage.setItem('email', value.email);
+                this.checkLoggedIn();
+            })
+        );
     }
 
-    public signUp(): Observable<any> {
-        this.http.post<OutputAuthorization>(this.url + "/registration", {
-            email: "dub@db.ru",
-            password: "string",
-            isOrganizator: true,
-            isCouch: true
-        }).subscribe(value => console.log(value));
+    public signUp(value: {email: string; password: string, login: string}): Observable<any> {
+        // return this.http.post<OutputAuthorization>(this.url + "/registration", {
+        //     login: value.login,
+        //     email: value.email,
+        //     password: value.password,
+        //     isOrganizator: true,
+        //     isCouch: false
+        // });
 
-        return of(true);
+        return of(true).pipe(
+            tap((v) => {
+                localStorage.setItem('isAuth', 'true');
+                localStorage.setItem('email', value.email);
+                localStorage.setItem('login', value.login);
+                this.checkLoggedIn();
+            })
+        );
     }
 
     public logOut(): void {
-        localStorage.removeItem('isAuth');
+        localStorage.clear();
         this.isLoggedIn = false;
         this.router.navigate(['/auth']);
     }

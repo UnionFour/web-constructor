@@ -40,3 +40,21 @@
         </button>
     </div>
 </ng-template>
+
+
+<div *ngIf="openInfo" class="info">
+    <div class="content">
+        <div *ngIf="loading" class="loading-container">
+            <p>Ваш сайт создаётся...</p>
+            <tui-loader class="inline-flex loader"></tui-loader>
+        </div>
+    </div>
+    <button
+            *ngIf="!loading"
+            type="button"
+            class="delete-button"
+            (click)="openInfo = false"
+    >
+        <tui-svg src="tuiIconClose"></tui-svg>
+    </button>
+</div>

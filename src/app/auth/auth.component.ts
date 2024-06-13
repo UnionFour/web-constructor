@@ -47,7 +47,7 @@ export class AuthComponent implements OnInit {
         }
 
         this.loading = true;
-        this.authService.signIn().subscribe(
+        this.authService.signIn(this.signInForm.value).subscribe(
             (v) => {
                 this.loading = false;
                 if (v) {
@@ -68,7 +68,7 @@ export class AuthComponent implements OnInit {
         }
 
         this.loading = true;
-        this.authService.signUp().subscribe(
+        this.authService.signUp(this.signUpForm.value).subscribe(
             (v) => {
                 this.loading = false;
                 if (v) {
@@ -89,8 +89,6 @@ export class AuthComponent implements OnInit {
     }
 
     private onSuccess() {
-        localStorage.setItem('isAuth', 'true');
-        this.authService.checkLoggedIn();
         this.router.navigate(['']);
     }
 

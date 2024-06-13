@@ -78,6 +78,5 @@ export class NewsSettingsComponent extends SettingsBaseComponent {
 
     protected saveSiteSettings(value: any) {
         this.site.news = this.form.value;
-        console.log(this.site.news);
     }
 }

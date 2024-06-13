@@ -5,7 +5,7 @@ import { Router } from "@angular/router";
 
 class OutputAuthorization {
     public id: string = "";
-    public companyName: string = "";
+    public organizationName: string = "";
     public token: string = "";
     public isCouch: boolean = false;
     public isOrganizator: boolean = false;
@@ -44,7 +44,7 @@ export class AuthService {
 
     public signUp(value: { email: string; password: string, login: string }): Observable<any> {
         return this.http.post<OutputAuthorization>(this.url + "/registration", {
-            companyName: value.login,
+            organizationName: value.login,
             email: value.email,
             password: value.password,
             isOrganizator: true,

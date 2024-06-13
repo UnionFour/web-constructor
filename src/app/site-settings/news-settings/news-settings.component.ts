@@ -55,9 +55,9 @@ export class NewsSettingsComponent extends SettingsBaseComponent {
     public createNews() {
         this.newsFormArray.push(this.fb.group({
             img: [''],
+            title: [''],
             bigText: [''],
             littleText: [''],
-            text: [''],
             date: ['24.06.2024, 12:30'],
             address: [''],
             price: [0],

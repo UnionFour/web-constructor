@@ -34,6 +34,8 @@ import { TuiActiveZoneModule, TuiObscuredModule, TuiValueChangesModule } from "@
 import { NavSettingsComponent } from "./nav-settings/nav-settings.component";
 import { NewDetailComponent } from "./new-detail/new-detail.component";
 import { DateTransformerService } from "../services/date-transformer.service";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { DEFAULT_TIMEOUT, TimeoutInterceptor } from "../services/timeout.service";
 
 @NgModule({
     imports: [
@@ -91,6 +93,8 @@ import { DateTransformerService } from "../services/date-transformer.service";
             provide: TUI_DATE_TIME_VALUE_TRANSFORMER,
             useClass: DateTransformerService,
         },
+        { provide: HTTP_INTERCEPTORS, useClass: TimeoutInterceptor, multi: true },
+        { provide: DEFAULT_TIMEOUT, useValue: 600000 }
     ]
 })
 export class SiteSettingsModule {

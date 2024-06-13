@@ -38,8 +38,10 @@ export class AddressesSettingsComponent extends SettingsBaseComponent {
 
     public createAddress() {
         this.addressesFormArray.push(this.fb.group({
-            sportType: '',
-            address: ''
+            description: '',
+            address: '',
+            alt: '',
+            lat: ''
         }));
     }
 

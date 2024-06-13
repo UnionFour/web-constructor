@@ -65,27 +65,36 @@ $max-width: 1154px;
         }
     }
 
-    c{
+    .info {
         width: min(100%, 400px);
+        height: 52px;
         position: fixed;
         top: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         left: calc(50vw - 200px);
         padding: 10px 12px;
         background: #fff;
         z-index: 1000;
         border-radius: 16px;
         box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+
+        p {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        span {
+            font-weight: 500;
+            color: #831d1d;
+        }
     }
 
     .loading-container {
         display: flex;
         align-items: center;
         justify-content: center;
-
-        p {
-            font-size: 20px;
-            font-weight: 500;
-        }
 
         tui-loader {
             margin-left: 20px;
@@ -110,6 +119,8 @@ $max-width: 1154px;
         .info {
             left: 0;
             width: 100%;
+            top: 75px;
+            border-radius: 0;
         }
     }
 }

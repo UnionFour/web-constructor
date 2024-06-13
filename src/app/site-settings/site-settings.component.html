@@ -35,6 +35,7 @@
                 type="button"
                 size="m"
                 class="tui-space_right-3 tui-space_bottom-3"
+                [disabled]="loading"
         >
             Выйти
         </button>
@@ -44,10 +45,18 @@
 
 <div *ngIf="openInfo" class="info">
     <div class="content">
-        <div *ngIf="loading" class="loading-container">
-            <p>Ваш сайт создаётся...</p>
-            <tui-loader class="inline-flex loader"></tui-loader>
-        </div>
+        <ng-container [ngSwitch]="loading">
+            <div *ngSwitchCase="true" class="loading-container">
+                <p>Ваш сайт создаётся...</p>
+                <tui-loader class="inline-flex loader"></tui-loader>
+            </div>
+            <div *ngSwitchCase="false">
+                <ng-container [ngSwitch]="isSuccess">
+                    <p *ngSwitchCase="true">Ваш сайт успешно создан!</p>
+                    <span *ngSwitchCase="false">Произошла ошибка, обратитесь к поддержке</span>
+                </ng-container>
+            </div>
+        </ng-container>
     </div>
     <button
             *ngIf="!loading"

@@ -13,6 +13,7 @@ export class SiteSettingsComponent {
     public open = false;
     public loading = false;
     public openInfo = false;
+    public isSuccess = false;
 
     // тут дефолтный объект, для использования в случае создания с нуля
     //  необходимо подхватывать сохраненные изменения
@@ -63,12 +64,12 @@ export class SiteSettingsComponent {
         this.openInfo = true;
         this.builder.build(companyName, siteSettings, images).subscribe(
             () => {
+                this.isSuccess = true;
                 this.loading = false;
             },
-            () => {
-                // this.loading = false;
-
-                // for test
+            (e) => {
+                this.loading = false;
+                this.isSuccess = false;
             }
         );
     }

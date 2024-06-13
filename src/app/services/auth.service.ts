@@ -28,15 +28,13 @@ export class AuthService {
     }
 
     public signIn(value: {email: string; password: string}): Observable<any> {
-        // return this.http.post<OutputAuthorization>(this.url + "/authorization", {
-        //     email: value.email,
-        //     password: value.password,
-        //     isOrganizator: true,
-        //     isCouch: false
-        // });
-
-        return of(true).pipe(
-            tap((v) => {
+        return this.http.post<OutputAuthorization>(this.url + "/authorization", {
+            email: value.email,
+            password: value.password,
+            isOrganizator: true,
+            isCouch: false
+        }).pipe(
+            tap(() => {
                 localStorage.setItem('isAuth', 'true');
                 localStorage.setItem('email', value.email);
                 this.checkLoggedIn();
@@ -45,16 +43,14 @@ export class AuthService {
     }
 
     public signUp(value: {email: string; password: string, login: string}): Observable<any> {
-        // return this.http.post<OutputAuthorization>(this.url + "/registration", {
-        //     login: value.login,
-        //     email: value.email,
-        //     password: value.password,
-        //     isOrganizator: true,
-        //     isCouch: false
-        // });
-
-        return of(true).pipe(
-            tap((v) => {
+        return this.http.post<OutputAuthorization>(this.url + "/registration", {
+            login: value.login,
+            email: value.email,
+            password: value.password,
+            isOrganizator: true,
+            isCouch: false
+        }).pipe(
+            tap(() => {
                 localStorage.setItem('isAuth', 'true');
                 localStorage.setItem('email', value.email);
                 localStorage.setItem('login', value.login);
@@ -66,6 +62,6 @@ export class AuthService {
     public logOut(): void {
         localStorage.clear();
         this.isLoggedIn = false;
-        this.router.navigate(['/auth']);
+        this.router.navigate(['/reg']);
     }
 }

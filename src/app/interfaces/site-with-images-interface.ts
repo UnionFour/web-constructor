@@ -32,7 +32,16 @@ export interface TextWithImage {
 
 export interface NewsSettings {
     title: string;
-    news: TextWithImage[];
+    news: NewInterface[];
+}
+
+export interface NewInterface extends TextWithImage {
+    date: string;
+    address: string;
+    price: number;
+    maxPlaceCount: number;
+    busyPlaceCount: number;
+    phone: string;
 }
 
 // addresses

@@ -1,0 +1,32 @@
+:host {
+    form > * {
+        margin-bottom: 15px;
+
+        &:first-child {
+            margin-bottom: 25px;
+        }
+    }
+
+    .with-tooltip {
+        position: relative;
+
+        tui-tooltip {
+            position: absolute;
+            left: -25px;
+            top: 10px;
+        }
+    }
+
+    .flex-settings {
+        display: flex;
+        gap: 16px;
+
+        > * {
+            width: calc(50% - 8px);
+        }
+    }
+
+    tui-editor {
+        height: 500px;
+    }
+}

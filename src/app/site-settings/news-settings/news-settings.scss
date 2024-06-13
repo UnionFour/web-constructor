@@ -4,12 +4,16 @@
     }
 
     .news-card {
-        height: 572px;
+        height: 674px;
         width: 356px;
         margin: 9px;
 
         > *:not(:last-child) {
             margin-bottom: 10px;
+        }
+
+        .detail {
+            width: 100%;
         }
     }
 
@@ -29,7 +33,7 @@
 @media (max-width: 630px) {
     :host {
         .news-card {
-            height: 364px;
+            height: 462px;
         }
 
         .image-input {

@@ -2,13 +2,20 @@ import { Injector, INJECTOR, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // tui
-import { TuiDataListWrapperModule, TuiInputFilesModule, TuiInputModule, TuiSelectModule } from '@taiga-ui/kit';
+import {
+    TUI_DATE_TIME_VALUE_TRANSFORMER,
+    TuiDataListWrapperModule,
+    TuiInputDateModule, TuiInputDateTimeModule,
+    TuiInputFilesModule,
+    TuiInputModule, TuiInputNumberModule, TuiInputPhoneModule,
+    TuiSelectModule
+} from '@taiga-ui/kit';
 import {
     TUI_SANITIZER,
     TuiButtonModule, TuiDropdownModule,
     TuiScrollbarModule,
     TuiSvgModule,
-    TuiTextfieldControllerModule
+    TuiTextfieldControllerModule, TuiTooltipModule
 } from '@taiga-ui/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TuiInputColorModule } from '@tinkoff/tui-editor';
@@ -25,6 +32,8 @@ import { AddressesSettingsComponent } from './addresses-settings/addresses-setti
 import { InstructorsSettingsComponent } from './instructors-settings/instructors-settings.component';
 import { TuiActiveZoneModule, TuiObscuredModule, TuiValueChangesModule } from "@taiga-ui/cdk";
 import { NavSettingsComponent } from "./nav-settings/nav-settings.component";
+import { NewDetailComponent } from "./new-detail/new-detail.component";
+import { DateTransformerService } from "../services/date-transformer.service";
 
 @NgModule({
     imports: [
@@ -44,7 +53,12 @@ import { NavSettingsComponent } from "./nav-settings/nav-settings.component";
         TuiScrollbarModule,
         TuiDropdownModule,
         TuiActiveZoneModule,
-        TuiObscuredModule
+        TuiObscuredModule,
+        TuiInputDateModule,
+        TuiInputDateTimeModule,
+        TuiTooltipModule,
+        TuiInputNumberModule,
+        TuiInputPhoneModule
     ],
     declarations: [
         SiteSettingsComponent,
@@ -54,7 +68,8 @@ import { NavSettingsComponent } from "./nav-settings/nav-settings.component";
         ServicesSettingsComponent,
         AddressesSettingsComponent,
         InstructorsSettingsComponent,
-        NavSettingsComponent
+        NavSettingsComponent,
+        NewDetailComponent
     ],
     providers: [
         {
@@ -70,6 +85,10 @@ import { NavSettingsComponent } from "./nav-settings/nav-settings.component";
                     tuiCreateImageEditorExtension({injector}),
                 ),
             ],
+        },
+        {
+            provide: TUI_DATE_TIME_VALUE_TRANSFORMER,
+            useClass: DateTransformerService,
         },
     ]
 })

@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { SiteWithImagesInterface } from "../interfaces/site-with-images-interface";
 import { DefaultThemes } from "../fixtures/themes.fixture";
 import { BuilderService } from "../services/builder.service";
-import { Router } from "@angular/router";
 import { AuthService } from "../services/auth.service";
 
 @Component({
@@ -19,7 +18,7 @@ export class SiteSettingsComponent {
         navigation: { logoImg: undefined, companyName: 'Школа спорта', description: 'О нас', news: 'Наши новости', addresses: 'Спортивные залы', instructors: 'Преподаватели', services: 'Услуги' },
         themeVariables: DefaultThemes[0].themeVariables,
         main: { img: undefined, title: 'О нас', text: '' },
-        news: { title: 'Наши новости', news: [{ img: undefined, title: '', text: '' }] },
+        news: { title: 'Наши новости', news: [{ img: undefined, title: '', text: '', address: '', date: '', price: 0, maxPlaceCount: 10, busyPlaceCount: 0, phone: '' }] },
         addresses: { title: 'Спортивные залы', addresses: [{description: 'Баскетбол', address: 'ул. Пушкина д. 60', lat: 55.9999, alt: 37.23234}] },
         instructors: { title: 'Преподаватели', instructors: [{ img: undefined, name: 'Василий Аккордон Васильевич', sportType: 'Баскетбол', info: 'Лучший преподаватель в мире' }] },
         services: { title: 'Услуги', services: [{sportType: '', text: '', address: '', buttonWording: 'Записаться'}] }
